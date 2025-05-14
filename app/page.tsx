@@ -13,7 +13,7 @@ export default function Home() {
         </div>
         <h1 className="text-5xl font-bold mb-4 text-kubernetes">Kubernetes Production Issues</h1>
         <p className="text-xl text-muted-foreground leading-relaxed">
-          A collection of 500 real-world Kubernetes production issues and their solutions, presented in an
+          A collection of real-world Kubernetes production issues and their solutions, presented in an
           easy-to-navigate format.
         </p>
       </header>

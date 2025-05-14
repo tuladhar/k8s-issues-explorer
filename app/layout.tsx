@@ -57,7 +57,7 @@ export default function RootLayout({
                     className="flex items-center gap-2 text-sm hover:text-kubernetes transition-colors"
                   >
                     <LinkedInIcon className="h-5 w-5" />
-                    <span className="hidden sm:inline">Creator</span>
+                    <span className="hidden sm:inline">LinkedIn</span>
                   </a>
                 </div>
               </div>
@@ -86,14 +86,14 @@ export default function RootLayout({
                       rel="noopener noreferrer"
                       className="font-medium underline underline-offset-4 hover:text-kubernetes"
                     >
-                      Pur Tuladhar
+                      Puru Tuladhar
                     </a>
                   </p>
                 </div>
-                <p className="text-xs text-muted-foreground">
+                {/* <p className="text-xs text-muted-foreground">
                   © {new Date().getFullYear()} K8s Issues Explorer. This site is not affiliated with the official
                   Kubernetes project.
-                </p>
+                </p> */}
               </div>
             </footer>
           </div>
