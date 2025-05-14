@@ -17,7 +17,7 @@ const robotoMono = Roboto_Mono({
 
 export const metadata = {
   title: "K8s Production Issues Explorer",
-  description: "A collection of 500 real-world Kubernetes production issues and their solutions",
+  description: "A collection of real-world Kubernetes production issues and their solutions",
     generator: 'v0.dev'
 }
 
