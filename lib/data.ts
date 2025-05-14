@@ -4991,7 +4991,7 @@ export const scenarios: Scenario[] = [
     "title": "Misconfigured Ingress Controller Exposing Internal Services",
     "category": "Security",
     "environment": "Kubernetes v1.24, GKE",
-    "summary": "",
+    "summary": "An Ingress controller was misconfigured, inadvertently exposing internal services to the public internet.",
     "whatHappened": "The default configuration of the Ingress controller allowed all incoming traffic without proper authentication or IP restrictions. This oversight exposed internal services, making them accessible to unauthorized users.",
     "diagnosisSteps": [
       "Reviewed Ingress controller configurations.",
@@ -5011,7 +5011,7 @@ export const scenarios: Scenario[] = [
     "title": "Privileged Containers Without Security Context",
     "category": "Security",
     "environment": "Kubernetes v1.22, EKS",
-    "summary": "",
+    "summary": "Containers were running with elevated privileges without defined security contexts, increasing the risk of host compromise.",
     "whatHappened": "Several pods were deployed with the privileged: true flag but lacked defined security contexts. This configuration allowed containers to perform operations that could compromise the host system.",
     "diagnosisSteps": [
       "Inspected pod specifications for security context configurations.",
@@ -5031,7 +5031,7 @@ export const scenarios: Scenario[] = [
     "title": "Unrestricted Network Policies Allowing Lateral Movement",
     "category": "Security",
     "environment": "Kubernetes v1.21, Azure AKS",
-    "summary": "",
+    "summary": "Lack of restrictive network policies permitted lateral movement within the cluster after a pod compromise.",
     "whatHappened": "An attacker compromised a pod and, due to unrestricted network policies, was able to move laterally within the cluster, accessing other pods and services.",
     "diagnosisSteps": [
       "Reviewed network policy configurations.",
@@ -5051,7 +5051,7 @@ export const scenarios: Scenario[] = [
     "title": "Exposed Kubernetes Dashboard Without Authentication",
     "category": "Security",
     "environment": "Kubernetes v1.20, On-Premise",
-    "summary": "",
+    "summary": "The Kubernetes Dashboard was exposed without authentication, allowing unauthorized access to cluster resources.",
     "whatHappened": "The Kubernetes Dashboard was deployed with default settings, lacking authentication mechanisms. This oversight allowed anyone with network access to interact with the dashboard and manage cluster resources.",
     "diagnosisSteps": [
       "Accessed the dashboard without credentials.",
@@ -5071,7 +5071,7 @@ export const scenarios: Scenario[] = [
     "title": "Use of Vulnerable Container Images",
     "category": "Security",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Deployment of container images with known vulnerabilities led to potential exploitation risks.",
     "whatHappened": "Applications were deployed using outdated container images that contained known vulnerabilities. These vulnerabilities could be exploited by attackers to compromise the application and potentially the cluster.",
     "diagnosisSteps": [
       "Scanned container images for known vulnerabilities.",
@@ -5091,7 +5091,7 @@ export const scenarios: Scenario[] = [
     "title": "Misconfigured Role-Based Access Control (RBAC)",
     "category": "Security",
     "environment": "Kubernetes v1.22, GKE",
-    "summary": "",
+    "summary": "Overly permissive RBAC configurations granted users more access than necessary, posing security risks.",
     "whatHappened": "Users were assigned roles with broad permissions, allowing them to perform actions beyond their responsibilities. This misconfiguration increased the risk of accidental or malicious changes to the cluster.",
     "diagnosisSteps": [
       "Reviewed RBAC role and role binding configurations.",
@@ -5111,7 +5111,7 @@ export const scenarios: Scenario[] = [
     "title": "Insecure Secrets Management",
     "category": "Security",
     "environment": "Kubernetes v1.21, On-Premise",
-    "summary": "",
+    "summary": "Secrets were stored in plaintext within configuration files, leading to potential exposure.",
     "whatHappened": "Sensitive information, such as API keys and passwords, was stored directly in configuration files without encryption. This practice risked exposure if the files were accessed by unauthorized individuals.",
     "diagnosisSteps": [
       "Inspected configuration files for embedded secrets.",
@@ -5131,7 +5131,7 @@ export const scenarios: Scenario[] = [
     "title": "Lack of Audit Logging",
     "category": "Security",
     "environment": "Kubernetes v1.24, Azure AKS",
-    "summary": "",
+    "summary": "Absence of audit logging hindered the ability to detect and investigate security incidents.",
     "whatHappened": "A security incident occurred, but due to the lack of audit logs, it was challenging to trace the actions leading up to the incident and identify the responsible parties.",
     "diagnosisSteps": [
       "Attempted to review audit logs for the incident timeframe.",
@@ -5151,7 +5151,7 @@ export const scenarios: Scenario[] = [
     "title": "Unrestricted Access to etcd",
     "category": "Security",
     "environment": "Kubernetes v1.20, On-Premise",
-    "summary": "",
+    "summary": "The etcd datastore was accessible without authentication, risking exposure of sensitive cluster data.",
     "whatHappened": "The etcd service was configured without authentication or encryption, allowing unauthorized users to access and modify cluster state data.",
     "diagnosisSteps": [
       "Attempted to connect to etcd without credentials.",
@@ -5171,7 +5171,7 @@ export const scenarios: Scenario[] = [
     "title": "Absence of Pod Security Policies",
     "category": "Security",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Without Pod Security Policies, pods were deployed with insecure configurations, increasing the attack surface.",
     "whatHappened": "Pods were deployed without restrictions, allowing configurations such as running as root, using host networking, and mounting sensitive host paths, which posed security risks.",
     "diagnosisSteps": [
       "Reviewed pod specifications for security configurations.",
@@ -5191,7 +5191,7 @@ export const scenarios: Scenario[] = [
     "title": "Service Account Token Mounted in All Pods",
     "category": "Security",
     "environment": "Kubernetes v1.23, AKS",
-    "summary": "",
+    "summary": "All pods had default service account tokens mounted, increasing the risk of credential leakage.",
     "whatHappened": "Developers were unaware that service account tokens were being auto-mounted into every pod, even when not required. If any pod was compromised, its token could be misused to access the Kubernetes API.",
     "diagnosisSteps": [
       "Inspected pod specs for automountServiceAccountToken.",
@@ -5211,7 +5211,7 @@ export const scenarios: Scenario[] = [
     "title": "Sensitive Logs Exposed via Centralized Logging",
     "category": "Security",
     "environment": "Kubernetes v1.22, EKS with Fluentd",
-    "summary": "",
+    "summary": "Secrets and passwords were accidentally logged and shipped to a centralized logging service accessible to many teams.",
     "whatHappened": "Application code logged sensitive values like passwords and access keys, which were picked up by Fluentd and visible in Kibana.",
     "diagnosisSteps": [
       "Reviewed logs after a security audit.",
@@ -5231,7 +5231,7 @@ export const scenarios: Scenario[] = [
     "title": "Broken Container Escape Detection",
     "category": "Security",
     "environment": "Kubernetes v1.24, GKE",
-    "summary": "",
+    "summary": "A malicious container escaped to host level due to an unpatched kernel, but went undetected due to insufficient monitoring.",
     "whatHappened": "A CVE affecting cgroups allowed container breakout. The attacker executed host-level commands and pivoted laterally across nodes.",
     "diagnosisSteps": [
       "Investigated suspicious node-level activity.",
@@ -5251,7 +5251,7 @@ export const scenarios: Scenario[] = [
     "title": "Unauthorized Cloud Metadata API Access",
     "category": "Security",
     "environment": "Kubernetes v1.22, AWS",
-    "summary": "",
+    "summary": "A pod was able to access the EC2 metadata API and retrieve IAM credentials due to open network access.",
     "whatHappened": "A compromised pod accessed the instance metadata service via the default route and used the credentials to access S3 and RDS.",
     "diagnosisSteps": [
       "Analyzed cloudtrail logs for unauthorized S3 access.",
@@ -5271,7 +5271,7 @@ export const scenarios: Scenario[] = [
     "title": "Admin Kubeconfig Checked into Git",
     "category": "Security",
     "environment": "Kubernetes v1.23, On-Prem",
-    "summary": "",
+    "summary": "A developer accidentally committed a kubeconfig file with full admin access into a public Git repository.",
     "whatHappened": "During a code review, a sensitive kubeconfig file was found in a GitHub repo. The credentials allowed full control over the production cluster.",
     "diagnosisSteps": [
       "Used GitHub search to identify exposed secrets.",
@@ -5291,7 +5291,7 @@ export const scenarios: Scenario[] = [
     "title": "JWT Token Replay Attack in Webhook Auth",
     "category": "Security",
     "environment": "Kubernetes v1.21, AKS",
-    "summary": "",
+    "summary": "Reused JWT tokens from intercepted API requests were used to impersonate authorized users.",
     "whatHappened": "A webhook-based authentication system accepted JWTs without checking their freshness. Tokens were reused in replay attacks.",
     "diagnosisSteps": [
       "Inspected API server logs for duplicate token use.",
@@ -5311,7 +5311,7 @@ export const scenarios: Scenario[] = [
     "title": "Container With Hardcoded SSH Keys",
     "category": "Security",
     "environment": "Kubernetes v1.20, On-Prem",
-    "summary": "",
+    "summary": "A base image included hardcoded SSH keys which allowed attackers lateral access between environments.",
     "whatHappened": "A developer reused a base image with an embedded SSH private key. This key was used across environments and eventually leaked.",
     "diagnosisSteps": [
       "Analyzed image layers with Trivy.",
@@ -5331,7 +5331,7 @@ export const scenarios: Scenario[] = [
     "title": "Insecure Helm Chart Defaults",
     "category": "Security",
     "environment": "Kubernetes v1.24, GKE",
-    "summary": "",
+    "summary": "A popular Helm chart had insecure defaults, like exposing dashboards or running as root.",
     "whatHappened": "A team installed a chart from a public Helm repo and unknowingly exposed a dashboard on the internet.",
     "diagnosisSteps": [
       "Discovered open dashboards in a routine scan.",
@@ -5351,7 +5351,7 @@ export const scenarios: Scenario[] = [
     "title": "Shared Cluster with Overlapping Namespaces",
     "category": "Security",
     "environment": "Kubernetes v1.22, Shared Dev Cluster",
-    "summary": "",
+    "summary": "Multiple teams used the same namespace naming conventions, causing RBAC overlaps and security concerns.",
     "whatHappened": "Two teams created namespaces with the same name across dev environments. RBAC rules overlapped and one team accessed another’s workloads.",
     "diagnosisSteps": [
       "Reviewed RBAC bindings across namespaces.",
@@ -5371,7 +5371,7 @@ export const scenarios: Scenario[] = [
     "title": "CVE Ignored in Base Image for Months",
     "category": "Security",
     "environment": "Kubernetes v1.23, AWS",
-    "summary": "",
+    "summary": "A known CVE affecting the base image used by multiple services remained unpatched due to no alerting.",
     "whatHappened": "A vulnerability in glibc went unnoticed for months because there was no automated CVE scan or alerting. Security only discovered it during a quarterly audit.",
     "diagnosisSteps": [
       "Scanned container image layers manually.",
@@ -5391,7 +5391,7 @@ export const scenarios: Scenario[] = [
     "title": "Misconfigured PodSecurityPolicy Allowed Privileged Containers",
     "category": "Security",
     "environment": "Kubernetes v1.21, On-Prem Cluster",
-    "summary": "",
+    "summary": "Pods were running with privileged: true due to a permissive PodSecurityPolicy (PSP) left enabled during testing.",
     "whatHappened": "Developers accidentally left a wide-open PSP in place that allowed privileged containers, host networking, and host path mounts. This allowed a compromised container to access host files.",
     "diagnosisSteps": [
       "Audited active PSPs.",
@@ -5411,7 +5411,7 @@ export const scenarios: Scenario[] = [
     "title": "GitLab Runners Spawning Privileged Containers",
     "category": "Security",
     "environment": "Kubernetes v1.23, GitLab CI on EKS",
-    "summary": "",
+    "summary": "GitLab runners were configured to run privileged containers to support Docker-in-Docker (DinD), leading to a high-risk setup.",
     "whatHappened": "A developer pipeline was hijacked and used to build malicious images, which had access to the underlying node due to privileged mode.",
     "diagnosisSteps": [
       "Detected unusual image pushes to private registry.",
@@ -5431,7 +5431,7 @@ export const scenarios: Scenario[] = [
     "title": "Kubernetes Secrets Mounted in World-Readable Volumes",
     "category": "Security",
     "environment": "Kubernetes v1.24, GKE",
-    "summary": "",
+    "summary": "Secret volumes were mounted with 0644 permissions, allowing any user process inside the container to read them.",
     "whatHappened": "A poorly configured application image had other processes running that could access mounted secrets (e.g., service credentials).",
     "diagnosisSteps": [
       "Reviewed mounted secret volumes and permissions.",
@@ -5451,7 +5451,7 @@ export const scenarios: Scenario[] = [
     "title": "Kubelet Port Exposed on Public Interface",
     "category": "Security",
     "environment": "Kubernetes v1.20, Bare Metal",
-    "summary": "",
+    "summary": "Kubelet was accidentally exposed on port 10250 to the public internet, allowing unauthenticated metrics and logs access.",
     "whatHappened": "Network misconfiguration led to open Kubelet ports without authentication. Attackers scraped pod logs and exploited the /exec endpoint.",
     "diagnosisSteps": [
       "Scanned node ports using nmap.",
@@ -5471,7 +5471,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Admin Bound to All Authenticated Users",
     "category": "Security",
     "environment": "Kubernetes v1.21, AKS",
-    "summary": "",
+    "summary": "A ClusterRoleBinding accidentally granted cluster-admin to all authenticated users due to system:authenticated group.",
     "whatHappened": "A misconfigured YAML granted admin access broadly, bypassing intended RBAC restrictions.",
     "diagnosisSteps": [
       "Audited ClusterRoleBindings.",
@@ -5491,7 +5491,7 @@ export const scenarios: Scenario[] = [
     "title": "Webhook Authentication Timing Out, Causing Denial of Service",
     "category": "Security",
     "environment": "Kubernetes v1.22, EKS",
-    "summary": "",
+    "summary": "Authentication webhook for custom RBAC timed out under load, rejecting valid users and causing cluster-wide issues.",
     "whatHappened": "Spike in API requests caused the external webhook server to time out. This led to mass access denials and degraded API server performance.",
     "diagnosisSteps": [
       "Checked API server logs for webhook timeout messages.",
@@ -5511,7 +5511,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver Exposing Node Secrets",
     "category": "Security",
     "environment": "Kubernetes v1.24, CSI Plugin (AWS Secrets Store)",
-    "summary": "",
+    "summary": "Misconfigured CSI driver exposed secrets on hostPath mount accessible to privileged pods.",
     "whatHappened": "Secrets mounted via the CSI driver were not isolated properly, allowing another pod with hostPath access to read them.",
     "diagnosisSteps": [
       "Reviewed CSI driver logs and configurations.",
@@ -5531,7 +5531,7 @@ export const scenarios: Scenario[] = [
     "title": "EphemeralContainers Used for Reconnaissance",
     "category": "Security",
     "environment": "Kubernetes v1.25, GKE",
-    "summary": "",
+    "summary": "A compromised user deployed ephemeral containers to inspect and copy secrets from running pods.",
     "whatHappened": "A user with access to ephemeralcontainers feature spun up containers in critical pods and read mounted secrets and env vars.",
     "diagnosisSteps": [
       "Audited API server calls to ephemeralcontainers API.",
@@ -5551,7 +5551,7 @@ export const scenarios: Scenario[] = [
     "title": "hostAliases Used for Spoofing Internal Services",
     "category": "Security",
     "environment": "Kubernetes v1.22, On-Prem",
-    "summary": "",
+    "summary": "Malicious pod used hostAliases to spoof internal service hostnames and intercept requests.",
     "whatHappened": "An insider attack modified /etc/hosts in a pod using hostAliases to redirect requests to attacker-controlled services.",
     "diagnosisSteps": [
       "Reviewed pod manifests with hostAliases.",
@@ -5571,7 +5571,7 @@ export const scenarios: Scenario[] = [
     "title": "Privilege Escalation via Unchecked securityContext in Helm Chart",
     "category": "Security",
     "environment": "Kubernetes v1.21, Helm v3.8",
-    "summary": "",
+    "summary": "A third-party Helm chart allowed setting arbitrary securityContext, letting users run pods as root in production.",
     "whatHappened": "A chart exposed securityContext overrides without constraints. A developer added runAsUser: 0during deployment, leading to root-level containers.",
     "diagnosisSteps": [
       "Inspected Helm chart values and rendered manifests.",
@@ -5591,7 +5591,7 @@ export const scenarios: Scenario[] = [
     "title": "Service Account Token Leakage via Logs",
     "category": "Security",
     "environment": "Kubernetes v1.23, AKS",
-    "summary": "",
+    "summary": "Application inadvertently logged its mounted service account token, exposing it to log aggregation systems.",
     "whatHappened": "A misconfigured logging library dumped all environment variables and mounted file contents at startup, including the token from /var/run/secrets/kubernetes.io/serviceaccount/token.",
     "diagnosisSteps": [
       "Searched central logs for token patterns.",
@@ -5611,7 +5611,7 @@ export const scenarios: Scenario[] = [
     "title": "Escalation via Editable Validating WebhookConfiguration",
     "category": "Security",
     "environment": "Kubernetes v1.24, EKS",
-    "summary": "",
+    "summary": "User with edit rights on a validating webhook modified it to bypass critical security policies.",
     "whatHappened": "An internal user reconfigured the webhook to always return allow, disabling cluster-wide security checks.",
     "diagnosisSteps": [
       "Detected anomaly: privileged pods getting deployed.",
@@ -5631,7 +5631,7 @@ export const scenarios: Scenario[] = [
     "title": "Stale Node Certificates After Rejoining Cluster",
     "category": "Security",
     "environment": "Kubernetes v1.21, Kubeadm-based cluster",
-    "summary": "",
+    "summary": "A node was rejoined to the cluster using a stale certificate, giving it access it shouldn't have.",
     "whatHappened": "A node that was previously removed was added back using an old /var/lib/kubelet/pki/kubelet-client.crt, which was still valid.",
     "diagnosisSteps": [
       "Compared certificate expiry and usage.",
@@ -5651,7 +5651,7 @@ export const scenarios: Scenario[] = [
     "title": "ArgoCD Exploit via Unverified Helm Charts",
     "category": "Security",
     "environment": "Kubernetes v1.24, ArgoCD",
-    "summary": "",
+    "summary": "ArgoCD deployed a malicious Helm chart that added privileged pods and container escape backdoors.",
     "whatHappened": "A team added a new Helm repo that wasn’t verified. The chart had post-install hooks that ran containers with host access.",
     "diagnosisSteps": [
       "Found unusual pods using hostNetwork and hostPID.",
@@ -5671,7 +5671,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Compromise via Insecure Container Runtime",
     "category": "Security",
     "environment": "Kubernetes v1.22, CRI-O on Bare Metal",
-    "summary": "",
+    "summary": "A CVE in the container runtime allowed a container breakout, leading to full node compromise.",
     "whatHappened": "An attacker exploited CRI-O vulnerability (CVE-2022-0811) that allowed containers to overwrite host paths via sysctl injection.",
     "diagnosisSteps": [
       "Detected abnormal node CPU spike and external traffic.",
@@ -5691,7 +5691,7 @@ export const scenarios: Scenario[] = [
     "title": "Workload with Wildcard RBAC Access to All Secrets",
     "category": "Security",
     "environment": "Kubernetes v1.23, Self-Hosted",
-    "summary": "",
+    "summary": "A microservice was granted get and list access to all secrets cluster-wide using *.",
     "whatHappened": "Developers gave overly broad access to a namespace-wide controller, leading to accidental exposure of unrelated team secrets.",
     "diagnosisSteps": [
       "Audited RBAC for secrets access.",
@@ -5710,7 +5710,7 @@ export const scenarios: Scenario[] = [
     "title": "Malicious Init Container Used for Reconnaissance",
     "category": "Security",
     "environment": "Kubernetes v1.25, GKE",
-    "summary": "",
+    "summary": "A pod was launched with a benign main container and a malicious init container that copied node metadata.",
     "whatHappened": "Init container wrote node files (e.g., /etc/resolv.conf, cloud instance metadata) to an external bucket before terminating.",
     "diagnosisSteps": [
       "Enabled audit logs for object storage.",
@@ -5730,7 +5730,7 @@ export const scenarios: Scenario[] = [
     "title": "Ingress Controller Exposed /metrics Without Auth",
     "category": "Security",
     "environment": "Kubernetes v1.24, NGINX Ingress",
-    "summary": "",
+    "summary": "Prometheus scraping endpoint /metrics was exposed without authentication and revealed sensitive internal details.",
     "whatHappened": "A misconfigured ingress rule allowed external users to access /metrics, which included upstream paths, response codes, and error logs.",
     "diagnosisSteps": [
       "Scanned public URLs.",
@@ -5750,7 +5750,7 @@ export const scenarios: Scenario[] = [
     "title": "Secret Stored in ConfigMap by Mistake",
     "category": "Security",
     "environment": "Kubernetes v1.23, AKS",
-    "summary": "",
+    "summary": "A sensitive API key was accidentally stored in a ConfigMap instead of a Secret, making it visible in plain text.",
     "whatHappened": "Developer used a ConfigMap for application config, and mistakenly included an apiKey in it. Anyone with view rights could read it.",
     "diagnosisSteps": [
       "Reviewed config files for plaintext secrets.",
@@ -5769,7 +5769,7 @@ export const scenarios: Scenario[] = [
     "title": "Token Reuse After Namespace Deletion and Recreation",
     "category": "Security",
     "environment": "Kubernetes v1.24, Self-Hosted",
-    "summary": "",
+    "summary": "A previously deleted namespace was recreated, and old tokens (from backups) were still valid and worked.",
     "whatHappened": "Developer restored a backup including secrets from a deleted namespace. The token was still valid and allowed access to cluster resources.",
     "diagnosisSteps": [
       "Found access via old token in logs.",
@@ -5789,7 +5789,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Stuck in Terminating State After Node Crash",
     "category": "Storage",
     "environment": "Kubernetes v1.22, EBS CSI Driver on EKS",
-    "summary": "",
+    "summary": "A node crash caused a PersistentVolumeClaim (PVC) to be stuck in Terminating, blocking pod deletion.",
     "whatHappened": "The node hosting the pod with the PVC crashed and never returned. The volume was still attached, and Kubernetes couldn’t cleanly unmount or delete it.",
     "diagnosisSteps": [
       "Described the PVC: status was Terminating.",
@@ -5809,7 +5809,7 @@ export const scenarios: Scenario[] = [
     "title": "Data Corruption on HostPath Volumes",
     "category": "Storage",
     "environment": "Kubernetes v1.20, Bare Metal",
-    "summary": "",
+    "summary": "Multiple pods sharing a HostPath volume led to inconsistent file states and eventual corruption.",
     "whatHappened": "Two pods were writing to the same HostPath volume concurrently, which wasn’t designed for concurrent write access. Files became corrupted due to race conditions.",
     "diagnosisSteps": [
       "Identified common HostPath mount across pods.",
@@ -5829,7 +5829,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Mount Fails Due to Node Affinity Mismatch",
     "category": "Storage",
     "environment": "Kubernetes v1.23, GCE PD on GKE",
-    "summary": "",
+    "summary": "A pod was scheduled on a node that couldn’t access the persistent disk due to zone mismatch.",
     "whatHappened": "A StatefulSet PVC was bound to a disk in us-central1-a, but the pod got scheduled in us-central1-b, causing volume mount failure.",
     "diagnosisSteps": [
       "Described pod: showed MountVolume.MountDevice failed.",
@@ -5849,7 +5849,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Not Rescheduled After Node Deletion",
     "category": "Storage",
     "environment": "Kubernetes v1.21, Azure Disk CSI",
-    "summary": "",
+    "summary": "A StatefulSet pod failed to reschedule after its node was deleted, due to Azure disk still being attached.",
     "whatHappened": "A pod using Azure Disk was on a node that was manually deleted. Azure did not automatically detach the disk, so rescheduling failed.",
     "diagnosisSteps": [
       "Pod stuck in ContainerCreating.",
@@ -5869,7 +5869,7 @@ export const scenarios: Scenario[] = [
     "title": "Long PVC Rebinding Time on StatefulSet Restart",
     "category": "Storage",
     "environment": "Kubernetes v1.24, Rook Ceph",
-    "summary": "",
+    "summary": "Restarting a StatefulSet with many PVCs caused long downtime due to slow rebinding.",
     "whatHappened": "A 20-replica StatefulSet was restarted, and each pod waited for its PVC to rebind and attach. Ceph mount operations were sequential and slow.",
     "diagnosisSteps": [
       "Pods stuck at Init stage for 15–20 minutes.",
@@ -5889,7 +5889,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Volume Plugin Crash Loops Due to Secret Rotation",
     "category": "Storage",
     "environment": "Kubernetes v1.25, Vault CSI Provider",
-    "summary": "",
+    "summary": "Volume plugin entered crash loop after secret provider’s token was rotated unexpectedly.",
     "whatHappened": "A service account used by the Vault CSI plugin had its token rotated mid-operation. The plugin couldn’t fetch new credentials and crashed.",
     "diagnosisSteps": [
       "CrashLoopBackOff on csi-vault-provider pods.",
@@ -5909,7 +5909,7 @@ export const scenarios: Scenario[] = [
     "title": "ReadWriteMany PVCs Cause IO Bottlenecks",
     "category": "Storage",
     "environment": "Kubernetes v1.23, NFS-backed PVCs",
-    "summary": "",
+    "summary": "Heavy read/write on a shared PVC caused file IO contention and throttling across pods.",
     "whatHappened": "Multiple pods used a shared ReadWriteMany PVC for scratch space. Concurrent writes led to massive IO wait times and high pod latency.",
     "diagnosisSteps": [
       "High pod latency and CPU idle time.",
@@ -5929,7 +5929,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Mount Timeout Due to PodSecurityPolicy",
     "category": "Storage",
     "environment": "Kubernetes v1.21, PSP Enabled Cluster",
-    "summary": "",
+    "summary": "A pod couldn’t mount a volume because PodSecurityPolicy (PSP) rejected required fsGroup.",
     "whatHappened": "A storage class required fsGroup for volume mount permissions. The pod didn’t set it, and PSP disallowed dynamic group assignment.",
     "diagnosisSteps": [
       "Pod stuck in CreateContainerConfigError.",
@@ -5949,7 +5949,7 @@ export const scenarios: Scenario[] = [
     "title": "Orphaned PVs After Namespace Deletion",
     "category": "Storage",
     "environment": "Kubernetes v1.20, Self-Hosted",
-    "summary": "",
+    "summary": "Deleting a namespace did not clean up PersistentVolumes, leading to leaked storage.",
     "whatHappened": "A team deleted a namespace with PVCs, but the associated PVs (with Retain policy) remained and weren’t cleaned up.",
     "diagnosisSteps": [
       "Listed all PVs: found orphaned volumes in Released state.",
@@ -5968,7 +5968,7 @@ export const scenarios: Scenario[] = [
     "title": "StorageClass Misconfiguration Blocks Dynamic Provisioning",
     "category": "Storage",
     "environment": "Kubernetes v1.25, GKE",
-    "summary": "",
+    "summary": "New PVCs failed to bind due to a broken default StorageClass with incorrect parameters.",
     "whatHappened": "A recent update modified the default StorageClass to use a non-existent disk type. All PVCs created with default settings failed provisioning.",
     "diagnosisSteps": [
       "PVCs in Pending state.",
@@ -5988,7 +5988,7 @@ export const scenarios: Scenario[] = [
     "title": "StatefulSet Volume Cloning Results in Data Leakage",
     "category": "Storage",
     "environment": "Kubernetes v1.24, CSI Volume Cloning enabled",
-    "summary": "",
+    "summary": "Cloning PVCs between StatefulSet pods led to shared data unexpectedly appearing in new replicas.",
     "whatHappened": "Engineers used volume cloning to duplicate data for new pods. They assumed data would be copied and isolated. However, clones preserved file locks and session metadata, which caused apps to behave erratically.",
     "diagnosisSteps": [
       "New pods accessed old session data unexpectedly.",
@@ -6008,7 +6008,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Resize Not Reflected in Mounted Filesystem",
     "category": "Storage",
     "environment": "Kubernetes v1.22, OpenEBS",
-    "summary": "",
+    "summary": "Volume expansion was successful on the PV, but pods didn’t see the increased space.",
     "whatHappened": "After increasing PVC size, the PV reflected the new size, but df -h inside the pod still showed the old size.",
     "diagnosisSteps": [
       "Checked PVC and PV: showed expanded size.",
@@ -6028,7 +6028,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Controller Pod Crash Due to Log Overflow",
     "category": "Storage",
     "environment": "Kubernetes v1.23, Longhorn",
-    "summary": "",
+    "summary": "The CSI controller crashed repeatedly due to unbounded logging filling up ephemeral storage.",
     "whatHappened": "A looped RPC error generated thousands of log lines per second. Node /var/log/containers hit 100% disk usage.",
     "diagnosisSteps": [
       "kubectl describe pod: showed OOMKilled and failed to write logs.",
@@ -6048,7 +6048,7 @@ export const scenarios: Scenario[] = [
     "title": "PVs Stuck in Released Due to Missing Finalizer Removal",
     "category": "Storage",
     "environment": "Kubernetes v1.21, NFS",
-    "summary": "",
+    "summary": "PVCs were deleted, but PVs remained stuck in Released, preventing reuse.",
     "whatHappened": "PVC deletion left behind PVs marked as Released, and the NFS driver didn’t remove finalizers, blocking clean-up.",
     "diagnosisSteps": [
       "Listed PVs: showed Released, with kubernetes.io/pv-protection finalizer still present.",
@@ -6067,7 +6067,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver DaemonSet Deployment Missing Tolerations for Taints",
     "category": "Storage",
     "environment": "Kubernetes v1.25, Bare Metal",
-    "summary": "",
+    "summary": "CSI Node plugin DaemonSet didn’t deploy on all nodes due to missing taint tolerations.",
     "whatHappened": "Storage nodes were tainted (node-role.kubernetes.io/storage:NoSchedule), and the CSI DaemonSet didn’t tolerate it, so pods failed to mount volumes.",
     "diagnosisSteps": [
       "CSI node pods not scheduled on certain nodes.",
@@ -6087,7 +6087,7 @@ export const scenarios: Scenario[] = [
     "title": "Mount Propagation Issues with Sidecar Containers",
     "category": "Storage",
     "environment": "Kubernetes v1.22, GKE",
-    "summary": "",
+    "summary": "Sidecar containers didn’t see mounted volumes due to incorrect mountPropagation settings.",
     "whatHappened": "An app container wrote to a mounted path, but sidecar container couldn’t read the changes.",
     "diagnosisSteps": [
       "Logs in sidecar showed empty directory.",
@@ -6106,7 +6106,7 @@ export const scenarios: Scenario[] = [
     "title": "File Permissions Reset on Pod Restart",
     "category": "Storage",
     "environment": "Kubernetes v1.20, CephFS",
-    "summary": "",
+    "summary": "Pod volume permissions reset after each restart, breaking application logic.",
     "whatHappened": "App wrote files with specific UID/GID. After restart, files were inaccessible due to CephFS resetting ownership.",
     "diagnosisSteps": [
       "Compared ls -l before/after restart.",
@@ -6124,7 +6124,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Mount Succeeds but Application Can't Write",
     "category": "Storage",
     "environment": "Kubernetes v1.23, EBS",
-    "summary": "",
+    "summary": "Volume mounted correctly, but application failed to write due to filesystem mismatch.",
     "whatHappened": "App expected xfs but volume formatted as ext4. Some operations silently failed or corrupted.",
     "diagnosisSteps": [
       "Application logs showed invalid argument on file ops.",
@@ -6143,7 +6143,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Snapshot Restore Includes Corrupt Data",
     "category": "Storage",
     "environment": "Kubernetes v1.24, Velero + CSI Snapshots",
-    "summary": "",
+    "summary": "Snapshot-based restore brought back corrupted state due to hot snapshot timing.",
     "whatHappened": "Velero snapshot was taken during active write burst. Filesystem was inconsistent at time of snapshot.",
     "diagnosisSteps": [
       "App logs showed corrupted files after restore.",
@@ -6162,7 +6162,7 @@ export const scenarios: Scenario[] = [
     "title": "Zombie Volumes Occupying Cloud Quota",
     "category": "Storage",
     "environment": "Kubernetes v1.25, AWS EBS",
-    "summary": "",
+    "summary": "Deleted PVCs didn’t release volumes due to failed detach steps, leading to quota exhaustion.",
     "whatHappened": "PVCs were deleted, but EBS volumes stayed in-use, blocking provisioning of new ones due to quota limits.",
     "diagnosisSteps": [
       "Checked AWS Console: volumes remained.",
@@ -6181,7 +6181,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Snapshot Garbage Collection Fails",
     "category": "Storage",
     "environment": "Kubernetes v1.25, CSI Snapshotter with Velero",
-    "summary": "",
+    "summary": "Volume snapshots piled up because snapshot objects were not getting garbage collected after use.",
     "whatHappened": "Snapshots triggered via Velero remained in the cluster even after restore, eventually exhausting cloud snapshot limits and storage quota.",
     "diagnosisSteps": [
       "Listed all VolumeSnapshots and VolumeSnapshotContents — saw hundreds still in ReadyToUse: true state.",
@@ -6201,7 +6201,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Mount Delays Due to Node Drain Stale Attachment",
     "category": "Storage",
     "environment": "Kubernetes v1.23, AWS EBS CSI",
-    "summary": "",
+    "summary": "Volumes took too long to attach on new nodes after pod rescheduling due to stale attachment metadata.",
     "whatHappened": "After draining a node for maintenance, workloads failed over, but volume attachments still pointed to old node, causing delays in remount.",
     "diagnosisSteps": [
       "Described PV: still had attachedNode as drained one.",
@@ -6221,7 +6221,7 @@ export const scenarios: Scenario[] = [
     "title": "Application Writes Lost After Node Reboot",
     "category": "Storage",
     "environment": "Kubernetes v1.21, Local Persistent Volumes",
-    "summary": "",
+    "summary": "After a node reboot, pod restarted, but wrote to a different volume path, resulting in apparent data loss.",
     "whatHappened": "Application data wasn’t persisted after a power cycle because the mount point dynamically changed.",
     "diagnosisSteps": [
       "Compared volume paths before and after reboot.",
@@ -6241,7 +6241,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod CrashLoop Due to Read-Only Volume Remount",
     "category": "Storage",
     "environment": "Kubernetes v1.22, GCP Filestore",
-    "summary": "",
+    "summary": "Pod volume was remounted as read-only after a transient network disconnect, breaking app write logic.",
     "whatHappened": "During a brief NFS outage, volume was remounted in read-only mode by the NFS client. Application kept crashing due to inability to write logs.",
     "diagnosisSteps": [
       "Checked mount logs: showed NFS remounted as read-only.",
@@ -6261,7 +6261,7 @@ export const scenarios: Scenario[] = [
     "title": "Data Corruption on Shared Volume With Two Pods",
     "category": "Storage",
     "environment": "Kubernetes v1.23, NFS PVC shared by 2 pods",
-    "summary": "",
+    "summary": "Two pods writing to the same volume caused inconsistent files and data loss.",
     "whatHappened": "Both pods ran jobs writing to the same output files. Without file locking, one pod overwrote data from the other.",
     "diagnosisSteps": [
       "Logs showed incomplete file writes.",
@@ -6281,7 +6281,7 @@ export const scenarios: Scenario[] = [
     "title": "Mount Volume Exceeded Timeout",
     "category": "Storage",
     "environment": "Kubernetes v1.26, Azure Disk CSI",
-    "summary": "",
+    "summary": "Pod remained stuck in ContainerCreating state because volume mount operations timed out.",
     "whatHappened": "CSI node plugin had stale cache and attempted mount on incorrect device path. Retry logic delayed pod start by ~15 minutes.",
     "diagnosisSteps": [
       "Described pod: stuck with Unable to mount volume error.",
@@ -6301,7 +6301,7 @@ export const scenarios: Scenario[] = [
     "title": "Static PV Bound to Wrong PVC",
     "category": "Storage",
     "environment": "Kubernetes v1.21, Manually created PVs",
-    "summary": "",
+    "summary": "A misconfigured static PV got bound to the wrong PVC, exposing sensitive data.",
     "whatHappened": "Two PVCs had overlapping selectors. The PV intended for app-A was bound to app-B, which accessed restricted files.",
     "diagnosisSteps": [
       "Checked PV annotations: saw wrong PVC UID.",
@@ -6321,7 +6321,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Eviction Due to DiskPressure Despite PVC",
     "category": "Storage",
     "environment": "Kubernetes v1.22, Local PVs",
-    "summary": "",
+    "summary": "Node evicted pods due to DiskPressure, even though app used dedicated PVC backed by a separate disk.",
     "whatHappened": "Node root disk filled up with log data, triggering eviction manager. The PVC itself was healthy and not full.",
     "diagnosisSteps": [
       "Node describe: showed DiskPressure condition true.",
@@ -6341,7 +6341,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Gets Stuck Due to Ghost Mount Point",
     "category": "Storage",
     "environment": "Kubernetes v1.20, iSCSI volumes",
-    "summary": "",
+    "summary": "Pod failed to start because the mount point was partially deleted, leaving the system confused.",
     "whatHappened": "After node crash, the iSCSI mount folder remained but device wasn’t attached. New pod couldn’t proceed due to leftover mount artifacts.",
     "diagnosisSteps": [
       "CSI logs: mount path exists but not a mount point.",
@@ -6361,7 +6361,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Resize Broke StatefulSet Ordering",
     "category": "Storage",
     "environment": "Kubernetes v1.24, StatefulSets + RWO PVCs",
-    "summary": "",
+    "summary": "When resizing PVCs, StatefulSet pods restarted in parallel, violating ordinal guarantees.",
     "whatHappened": "PVC expansion triggered pod restarts, but multiple pods came up simultaneously, causing database quorum failures.",
     "diagnosisSteps": [
       "Checked StatefulSet controller behavior — PVC resize didn’t preserve pod startup order.",
@@ -6380,7 +6380,7 @@ export const scenarios: Scenario[] = [
     "title": "ReadAfterWrite Inconsistency on Object Store-Backed CSI",
     "category": "Storage",
     "environment": "Kubernetes v1.26, MinIO CSI driver, Ceph RGW backend",
-    "summary": "",
+    "summary": "Applications experienced stale reads immediately after writing to the same file via CSI mount backed by an S3-like object store.",
     "whatHappened": "A distributed app wrote metadata and then read it back to validate—however, the file content was outdated due to eventual consistency in object backend.",
     "diagnosisSteps": [
       "Logged file hashes before and after write — mismatch seen.",
@@ -6400,7 +6400,7 @@ export const scenarios: Scenario[] = [
     "title": "PV Resize Fails After Node Reboot",
     "category": "Storage",
     "environment": "Kubernetes v1.24, AWS EBS",
-    "summary": "",
+    "summary": "After a node reboot, a PVC resize request remained pending, blocking pod start.",
     "whatHappened": "VolumeExpansion was triggered via PVC patch. But after a node reboot, controller couldn't find the in-use mount point to complete fsResize.",
     "diagnosisSteps": [
       "PVC status.conditions showed FileSystemResizePending.",
@@ -6420,7 +6420,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver Crash Loops on VolumeAttach",
     "category": "Storage",
     "environment": "Kubernetes v1.22, OpenEBS Jiva CSI",
-    "summary": "",
+    "summary": "CSI node plugin entered CrashLoopBackOff due to panic during volume attach, halting all storage provisioning.",
     "whatHappened": "VolumeAttachment object triggered a plugin bug—CSI crashed during RPC call, making storage class unusable.",
     "diagnosisSteps": [
       "Checked CSI node logs — Go panic in attach handler.",
@@ -6440,7 +6440,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Binding Fails Due to Multiple Default StorageClasses",
     "category": "Storage",
     "environment": "Kubernetes v1.23",
-    "summary": "",
+    "summary": "PVC creation failed intermittently because the cluster had two storage classes marked as default.",
     "whatHappened": "Two different teams installed their storage plugins (EBS and Rook), both marked default. PVC binding randomly chose one.",
     "diagnosisSteps": [
       "Ran kubectl get storageclass — two entries with is-default-class=true.",
@@ -6460,7 +6460,7 @@ export const scenarios: Scenario[] = [
     "title": "Zombie VolumeAttachment Blocks New PVC",
     "category": "Storage",
     "environment": "Kubernetes v1.21, Longhorn",
-    "summary": "",
+    "summary": "After a node crash, a VolumeAttachment object was not garbage collected, blocking new PVCs from attaching.",
     "whatHappened": "Application tried to use the volume, but Longhorn saw the old attachment from a dead node and refused reattachment.",
     "diagnosisSteps": [
       "Listed VolumeAttachment resources — found one pointing to a non-existent node.",
@@ -6480,7 +6480,7 @@ export const scenarios: Scenario[] = [
     "title": "Persistent Volume Bound But Not Mounted",
     "category": "Storage",
     "environment": "Kubernetes v1.25, NFS",
-    "summary": "",
+    "summary": "Pod entered Running state, but data was missing because PV was bound but not properly mounted.",
     "whatHappened": "NFS server was unreachable during pod start. Pod started, but mount failed silently due to default retry behavior.",
     "diagnosisSteps": [
       "mount output lacked NFS entry.",
@@ -6500,7 +6500,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Snapshot Restore Overwrites Active Data",
     "category": "Storage",
     "environment": "Kubernetes v1.26, CSI snapshots (v1beta1)",
-    "summary": "",
+    "summary": "User triggered a snapshot restore to an existing PVC, unintentionally overwriting live data.",
     "whatHappened": "Snapshot restore process recreated PVC from source but didn't prevent overwriting an already-mounted volume.",
     "diagnosisSteps": [
       "Traced VolumeSnapshotContent and PVC references.",
@@ -6520,7 +6520,7 @@ export const scenarios: Scenario[] = [
     "title": "Incomplete Volume Detach Breaks Node Scheduling",
     "category": "Storage",
     "environment": "Kubernetes v1.22, iSCSI",
-    "summary": "",
+    "summary": "Scheduler skipped a healthy node due to a ghost VolumeAttachment that was never cleaned up.",
     "whatHappened": "Node marked as ready, but volume controller skipped scheduling new pods due to “in-use” flag on volumes from a deleted pod.",
     "diagnosisSteps": [
       "Described unscheduled pod — failed to bind due to volume already attached.",
@@ -6540,7 +6540,7 @@ export const scenarios: Scenario[] = [
     "title": "App Breaks Due to Missing SubPath After Volume Expansion",
     "category": "Storage",
     "environment": "Kubernetes v1.24, PVC with subPath",
-    "summary": "",
+    "summary": "After PVC expansion, the mount inside pod pointed to root of volume, not the expected subPath.",
     "whatHappened": "Application was configured to mount /data/subdir. After resizing, pod restarted, and subPath was ignored, mounting full volume at /data.",
     "diagnosisSteps": [
       "Pod logs showed missing directory structure.",
@@ -6560,7 +6560,7 @@ export const scenarios: Scenario[] = [
     "title": "Backup Restore Process Created Orphaned PVCs",
     "category": "Storage",
     "environment": "Kubernetes v1.23, Velero",
-    "summary": "",
+    "summary": "A namespace restore from backup recreated PVCs that had no matching PVs, blocking further deployment.",
     "whatHappened": "Velero restored PVCs without matching spec.volumeName. Since PVs weren’t backed up, they remained Pending.",
     "diagnosisSteps": [
       "PVC status showed Pending, with no bound PV.",
@@ -6580,7 +6580,7 @@ export const scenarios: Scenario[] = [
     "title": "Cross-Zone Volume Binding Fails with StatefulSet",
     "category": "Storage",
     "environment": "Kubernetes v1.25, AWS EBS, StatefulSet with anti-affinity",
-    "summary": "",
+    "summary": "Pods in a StatefulSet failed to start due to volume binding constraints when spread across zones.",
     "whatHappened": "Each pod had a PVC, but volumes couldn’t be bound because the preferred zones didn't match pod scheduling constraints.",
     "diagnosisSteps": [
       "Pod events: failed to provision volume with StorageClass \"gp2\" due to zone mismatch.",
@@ -6599,7 +6599,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Snapshot Controller Race Condition",
     "category": "Storage",
     "environment": "Kubernetes v1.23, CSI Snapshot Controller",
-    "summary": "",
+    "summary": "Rapid creation/deletion of snapshots caused the controller to panic due to race conditions in snapshot finalizers.",
     "whatHappened": "Automation created/deleted hundreds of snapshots per minute. The controller panicked due to concurrent finalizer modifications.",
     "diagnosisSteps": [
       "Observed controller crash loop in logs.",
@@ -6619,7 +6619,7 @@ export const scenarios: Scenario[] = [
     "title": "Failed Volume Resize Blocks Rollout",
     "category": "Storage",
     "environment": "Kubernetes v1.24, CSI VolumeExpansion enabled",
-    "summary": "",
+    "summary": "Deployment rollout got stuck because one of the pods couldn’t start due to a failed volume expansion.",
     "whatHappened": "Admin updated PVC to request more storage. Resize failed due to volume driver limitation. New pods remained in Pending.",
     "diagnosisSteps": [
       "PVC events: resize not supported for current volume type.",
@@ -6638,7 +6638,7 @@ export const scenarios: Scenario[] = [
     "title": "Application Data Lost After Node Eviction",
     "category": "Storage",
     "environment": "Kubernetes v1.23, hostPath volumes",
-    "summary": "",
+    "summary": "Node drained for maintenance led to permanent data loss for apps using hostPath volumes.",
     "whatHappened": "Stateful workloads were evicted. When pods rescheduled on new nodes, the volume path was empty.",
     "diagnosisSteps": [
       "Observed empty application directories post-scheduling.",
@@ -6657,7 +6657,7 @@ export const scenarios: Scenario[] = [
     "title": "Read-Only PV Caused Write Failures After Restore",
     "category": "Storage",
     "environment": "Kubernetes v1.22, Velero, AWS EBS",
-    "summary": "",
+    "summary": "After restoring from backup, the volume was attached as read-only, causing application crashes.",
     "whatHappened": "Backup included PVCs and PVs, but not associated VolumeAttachment states. Restore marked volume read-only to avoid conflicts.",
     "diagnosisSteps": [
       "Pod logs: permission denied on writes.",
@@ -6677,7 +6677,7 @@ export const scenarios: Scenario[] = [
     "title": "NFS Server Restart Crashes Pods",
     "category": "Storage",
     "environment": "Kubernetes v1.24, in-cluster NFS server",
-    "summary": "",
+    "summary": "NFS server restarted for upgrade. All dependent pods crashed due to stale file handles and unmount errors.",
     "whatHappened": "NFS mount became stale after server restart. Pods using volumes got stuck in crash loops.",
     "diagnosisSteps": [
       "Pod logs: Stale file handle, I/O error.",
@@ -6696,7 +6696,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeBindingBlocked Condition Causes Pod Scheduling Delay",
     "category": "Storage",
     "environment": "Kubernetes v1.25, dynamic provisioning",
-    "summary": "",
+    "summary": "Scheduler skipped over pods with pending PVCs due to VolumeBindingBlocked status, even though volumes were eventually created.",
     "whatHappened": "PVC triggered provisioning, but until PV was available, pod scheduling was deferred.",
     "diagnosisSteps": [
       "Pod condition: PodScheduled: False, reason VolumeBindingBlocked.",
@@ -6716,7 +6716,7 @@ export const scenarios: Scenario[] = [
     "title": "Data Corruption from Overprovisioned Thin Volumes",
     "category": "Storage",
     "environment": "Kubernetes v1.22, LVM-CSI thin provisioning",
-    "summary": "",
+    "summary": "Under heavy load, pods reported data corruption. Storage layer had thinly provisioned LVM volumes that overcommitted disk.",
     "whatHappened": "Thin pool ran out of physical space during write bursts, leading to partial writes and corrupted files.",
     "diagnosisSteps": [
       "Pod logs: checksum mismatches.",
@@ -6736,7 +6736,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeProvisioningFailure on GKE Due to IAM Misconfiguration",
     "category": "Storage",
     "environment": "GKE, Workload Identity enabled",
-    "summary": "",
+    "summary": "CSI driver failed to provision new volumes due to missing IAM permissions, even though StorageClass was valid.",
     "whatHappened": "GCP Persistent Disk CSI driver couldn't create disks because the service account lacked compute permissions.",
     "diagnosisSteps": [
       "Event logs: failed to provision volume with StorageClass: permission denied.",
@@ -6755,7 +6755,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Crash Triggers Volume Remount Loop",
     "category": "Storage",
     "environment": "Kubernetes v1.26, CSI, NVMes",
-    "summary": "",
+    "summary": "After a node crash, volume remount loop occurred due to conflicting device paths.",
     "whatHappened": "Volume had a static device path cached in CSI driver. Upon node recovery, OS assigned a new device path. CSI couldn't reconcile.",
     "diagnosisSteps": [
       "CSI logs: device path not found.",
@@ -6775,7 +6775,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeMount Conflict Between Init and Main Containers",
     "category": "Storage",
     "environment": "Kubernetes v1.25, containerized database restore job",
-    "summary": "",
+    "summary": "Init container and main container used the same volume path but with different modes, causing the main container to crash.",
     "whatHappened": "An init container wrote a backup file to a shared volume. The main container expected a clean mount, found conflicting content, and failed on startup.",
     "diagnosisSteps": [
       "Pod logs showed file already exists error.",
@@ -6794,7 +6794,7 @@ export const scenarios: Scenario[] = [
     "title": "PVCs Stuck in “Terminating” Due to Finalizers",
     "category": "Storage",
     "environment": "Kubernetes v1.24, CSI driver with finalizer",
-    "summary": "",
+    "summary": "After deleting PVCs, they remained in Terminating state indefinitely due to stuck finalizers.",
     "whatHappened": "The CSI driver responsible for finalizer cleanup was crash-looping, preventing PVC finalizer execution.",
     "diagnosisSteps": [
       "PVCs had finalizer external-attacher.csi.driver.io.",
@@ -6813,7 +6813,7 @@ export const scenarios: Scenario[] = [
     "title": "Misconfigured ReadOnlyMany Mount Blocks Write Operations",
     "category": "Storage",
     "environment": "Kubernetes v1.23, NFS volume",
-    "summary": "",
+    "summary": "Volume mounted as ReadOnlyMany blocked necessary write operations, despite NFS server allowing writes.",
     "whatHappened": "VolumeMount was incorrectly marked as readOnly: true. Application failed on write attempts.",
     "diagnosisSteps": [
       "Application logs: read-only filesystem.",
@@ -6832,7 +6832,7 @@ export const scenarios: Scenario[] = [
     "title": "In-Tree Plugin PVs Lost After Driver Migration",
     "category": "Storage",
     "environment": "Kubernetes v1.26, in-tree to CSI migration",
-    "summary": "",
+    "summary": "Existing in-tree volumes became unrecognized after enabling CSI migration.",
     "whatHappened": "Migrated GCE volumes to CSI plugin. Old PVs had legacy annotations and didn’t bind correctly.",
     "diagnosisSteps": [
       "PVs showed Unavailable state.",
@@ -6851,7 +6851,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Deleted but Volume Still Mounted on Node",
     "category": "Storage",
     "environment": "Kubernetes v1.24, CSI",
-    "summary": "",
+    "summary": "Pod was force-deleted, but its volume wasn’t unmounted from the node, blocking future pod scheduling.",
     "whatHappened": "Force deletion bypassed CSI driver cleanup. Mount lingered and failed future pod volume attach.",
     "diagnosisSteps": [
       "kubectl describe node showed volume still attached.",
@@ -6871,7 +6871,7 @@ export const scenarios: Scenario[] = [
     "title": "Ceph RBD Volume Crashes Pods Under IOPS Saturation",
     "category": "Storage",
     "environment": "Kubernetes v1.23, Ceph CSI",
-    "summary": "",
+    "summary": "Under heavy I/O, Ceph volumes became unresponsive, leading to kernel-level I/O errors in pods.",
     "whatHappened": "Application workload created sustained random writes. Ceph cluster’s IOPS limit was reached.",
     "diagnosisSteps": [
       "dmesg logs: blk_update_request: I/O error.",
@@ -6891,7 +6891,7 @@ export const scenarios: Scenario[] = [
     "title": "ReplicaSet Using PVCs Fails Due to VolumeClaimTemplate Misuse",
     "category": "Storage",
     "environment": "Kubernetes v1.25",
-    "summary": "",
+    "summary": "Developer tried using volumeClaimTemplates in a ReplicaSet manifest, which isn’t supported.",
     "whatHappened": "Deployment applied, but pods failed to create PVCs.",
     "diagnosisSteps": [
       "Controller logs: volumeClaimTemplates is not supported in ReplicaSet.",
@@ -6910,7 +6910,7 @@ export const scenarios: Scenario[] = [
     "title": "Filesystem Type Mismatch During Volume Attach",
     "category": "Storage",
     "environment": "Kubernetes v1.24, ext4 vs xfs",
-    "summary": "",
+    "summary": "A pod failed to start because the PV expected ext4 but the node formatted it as xfs.",
     "whatHappened": "Pre-provisioned disk had xfs, but StorageClass defaulted to ext4.",
     "diagnosisSteps": [
       "Attach logs: mount failed: wrong fs type.",
@@ -6929,7 +6929,7 @@ export const scenarios: Scenario[] = [
     "title": "iSCSI Volumes Fail After Node Kernel Upgrade",
     "category": "Storage",
     "environment": "Kubernetes v1.26, CSI iSCSI plugin",
-    "summary": "",
+    "summary": "Post-upgrade, all pods using iSCSI volumes failed to mount due to kernel module incompatibility.",
     "whatHappened": "Kernel upgrade removed or broke iscsi_tcp module needed by CSI driver.",
     "diagnosisSteps": [
       "CSI logs: no such device iscsi_tcp.",
@@ -6949,7 +6949,7 @@ export const scenarios: Scenario[] = [
     "title": "PVs Not Deleted After PVC Cleanup Due to Retain Policy",
     "category": "Storage",
     "environment": "Kubernetes v1.23, AWS EBS",
-    "summary": "",
+    "summary": "After PVCs were deleted, underlying PVs and disks remained, leading to cloud resource sprawl.",
     "whatHappened": "Retain policy on the PV preserved the disk after PVC was deleted.",
     "diagnosisSteps": [
       "kubectl get pv showed status Released.",
@@ -6968,7 +6968,7 @@ export const scenarios: Scenario[] = [
     "title": "Concurrent Pod Scheduling on the Same PVC Causes Mount Conflict",
     "category": "Storage",
     "environment": "Kubernetes v1.24, AWS EBS, ReadWriteOnce PVC",
-    "summary": "",
+    "summary": "Two pods attempted to use the same PVC simultaneously, causing one pod to be stuck in ContainerCreating.",
     "whatHappened": "A deployment scale-up triggered duplicate pods trying to mount the same EBS volume on different nodes.",
     "diagnosisSteps": [
       "One pod was running, the other stuck in ContainerCreating.",
@@ -6987,7 +6987,7 @@ export const scenarios: Scenario[] = [
     "title": "StatefulSet Pod Replacement Fails Due to PVC Retention",
     "category": "Storage",
     "environment": "Kubernetes v1.23, StatefulSet with volumeClaimTemplates",
-    "summary": "",
+    "summary": "Deleted a StatefulSet pod manually, but new pod failed due to existing PVC conflict.",
     "whatHappened": "PVC persisted after pod deletion due to StatefulSet retention policy.",
     "diagnosisSteps": [
       "kubectl get pvc showed PVC still bound.",
@@ -7006,7 +7006,7 @@ export const scenarios: Scenario[] = [
     "title": "HostPath Volume Access Leaks Host Data into Container",
     "category": "Storage",
     "environment": "Kubernetes v1.22, single-node dev cluster",
-    "summary": "",
+    "summary": "HostPath volume mounted the wrong directory, exposing sensitive host data to the container.",
     "whatHappened": "Misconfigured path / instead of /data allowed container full read access to host.",
     "diagnosisSteps": [
       "Container listed host files under /mnt/host.",
@@ -7025,7 +7025,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver Crashes When Node Resource Is Deleted Prematurely",
     "category": "Storage",
     "environment": "Kubernetes v1.25, custom CSI driver",
-    "summary": "",
+    "summary": "Deleting a node object before the CSI driver detached volumes caused crash loops.",
     "whatHappened": "Admin manually deleted a node before volume detach completed.",
     "diagnosisSteps": [
       "CSI logs showed panic due to missing node metadata.",
@@ -7044,7 +7044,7 @@ export const scenarios: Scenario[] = [
     "title": "Retained PV Blocks New Claim Binding with Identical Name",
     "category": "Storage",
     "environment": "Kubernetes v1.21, NFS",
-    "summary": "",
+    "summary": "A PV stuck in Released state with Retain policy blocked new PVCs from binding with the same name.",
     "whatHappened": "Deleted old PVC and recreated a new one with the same name, but it stayed Pending.",
     "diagnosisSteps": [
       "PV was in Released, PVC was Pending.",
@@ -7063,7 +7063,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Plugin Panic on Missing Mount Option",
     "category": "Storage",
     "environment": "Kubernetes v1.26, custom CSI plugin",
-    "summary": "",
+    "summary": "Missing mountOptions in StorageClass led to runtime nil pointer exception in CSI driver.",
     "whatHappened": "StorageClass defined mountOptions: null, causing driver to crash during attach.",
     "diagnosisSteps": [
       "CSI logs showed panic: nil pointer dereference.",
@@ -7082,7 +7082,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Fails to Mount Volume Due to SELinux Context Mismatch",
     "category": "Storage",
     "environment": "Kubernetes v1.24, RHEL with SELinux enforcing",
-    "summary": "",
+    "summary": "Pod failed to mount volume due to denied SELinux permissions.",
     "whatHappened": "Volume was created with an incorrect SELinux context, preventing pod access.",
     "diagnosisSteps": [
       "Pod logs: permission denied.",
@@ -7101,7 +7101,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeExpansion on Bound PVC Fails Due to Pod Running",
     "category": "Storage",
     "environment": "Kubernetes v1.25, GCP PD",
-    "summary": "",
+    "summary": "PVC resize operation failed because the pod using it was still running.",
     "whatHappened": "Tried to resize a PVC while its pod was active.",
     "diagnosisSteps": [
       "PVC showed Resizing then back to Bound.",
@@ -7120,7 +7120,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver Memory Leak on Volume Detach Loop",
     "category": "Storage",
     "environment": "Kubernetes v1.24, external CSI",
-    "summary": "",
+    "summary": "CSI plugin leaked memory due to improper garbage collection on detach failure loop.",
     "whatHappened": "Detach failed repeatedly due to stale metadata, causing plugin to grow in memory use.",
     "diagnosisSteps": [
       "Plugin memory exceeded 1GB.",
@@ -7139,7 +7139,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Mount Timeout Due to Slow Cloud API",
     "category": "Storage",
     "environment": "Kubernetes v1.23, Azure Disk CSI",
-    "summary": "",
+    "summary": "During a cloud outage, Azure Disk operations timed out, blocking pod mounts.",
     "whatHappened": "Pods remained in ContainerCreating due to delayed volume attachment.",
     "diagnosisSteps": [
       "Event logs: timed out waiting for attach.",
@@ -7158,7 +7158,7 @@ export const scenarios: Scenario[] = [
     "title": "Volume Snapshot Restore Misses Application Consistency",
     "category": "Storage",
     "environment": "Kubernetes v1.26, Velero with CSI VolumeSnapshot",
-    "summary": "",
+    "summary": "Snapshot restore completed successfully, but restored app data was corrupt.",
     "whatHappened": "A volume snapshot was taken while the database was mid-write. Restore completed, but database wouldn't start due to file inconsistencies.",
     "diagnosisSteps": [
       "Restored volume had missing WAL files.",
@@ -7178,7 +7178,7 @@ export const scenarios: Scenario[] = [
     "title": "File Locking Issue Between Multiple Pods on NFS",
     "category": "Storage",
     "environment": "Kubernetes v1.22, NFS with ReadWriteMany",
-    "summary": "",
+    "summary": "Two pods wrote to the same file concurrently, causing lock conflicts and data loss.",
     "whatHappened": "Lack of advisory file locking on the NFS server led to race conditions between pods.",
     "diagnosisSteps": [
       "Log files had overlapping, corrupted data.",
@@ -7197,7 +7197,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Reboots Erase Data on EmptyDir Volume",
     "category": "Storage",
     "environment": "Kubernetes v1.24, default EmptyDir",
-    "summary": "",
+    "summary": "Pod restarts caused in-memory volume to be wiped, resulting in lost logs.",
     "whatHappened": "Logging container used EmptyDir with memory medium. Node rebooted, and logs were lost.",
     "diagnosisSteps": [
       "Post-reboot, EmptyDir was reinitialized.",
@@ -7216,7 +7216,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Resize Fails on In-Use Block Device",
     "category": "Storage",
     "environment": "Kubernetes v1.25, CSI with block mode",
-    "summary": "",
+    "summary": "PVC expansion failed for a block device while pod was still running.",
     "whatHappened": "Attempted to resize a raw block volume without terminating the consuming pod.",
     "diagnosisSteps": [
       "PVC stuck in Resizing.",
@@ -7235,7 +7235,7 @@ export const scenarios: Scenario[] = [
     "title": "Default StorageClass Prevents PVC Binding to Custom Class",
     "category": "Storage",
     "environment": "Kubernetes v1.23, GKE",
-    "summary": "",
+    "summary": "A PVC remained in Pending because the default StorageClass kept getting assigned instead of a custom one.",
     "whatHappened": "PVC YAML didn’t specify storageClassName, so the default one was used.",
     "diagnosisSteps": [
       "PVC described with wrong StorageClass.",
@@ -7254,7 +7254,7 @@ export const scenarios: Scenario[] = [
     "title": "Ceph RBD Volume Mount Failure Due to Kernel Mismatch",
     "category": "Storage",
     "environment": "Kubernetes v1.21, Rook-Ceph",
-    "summary": "",
+    "summary": "Mounting Ceph RBD volume failed after a node kernel upgrade.",
     "whatHappened": "The new kernel lacked required RBD modules.",
     "diagnosisSteps": [
       "dmesg showed rbd: module not found.",
@@ -7273,7 +7273,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Volume Cleanup Delay Leaves Orphaned Devices",
     "category": "Storage",
     "environment": "Kubernetes v1.24, Azure Disk CSI",
-    "summary": "",
+    "summary": "Volume deletion left orphaned devices on the node, consuming disk space.",
     "whatHappened": "Node failed to clean up mount paths after volume detach due to a kubelet bug.",
     "diagnosisSteps": [
       "Found stale device mounts in /var/lib/kubelet/plugins/kubernetes.io/csi."
@@ -7291,7 +7291,7 @@ export const scenarios: Scenario[] = [
     "title": "Immutable ConfigMap Used in CSI Sidecar Volume Mount",
     "category": "Storage",
     "environment": "Kubernetes v1.23, EKS",
-    "summary": "",
+    "summary": "CSI sidecar depended on a ConfigMap that was updated, but volume behavior didn’t change.",
     "whatHappened": "Sidecar didn’t restart, so old config was retained.",
     "diagnosisSteps": [
       "Volume behavior didn't reflect updated parameters.",
@@ -7310,7 +7310,7 @@ export const scenarios: Scenario[] = [
     "title": "PodMount Denied Due to SecurityContext Constraints",
     "category": "Storage",
     "environment": "Kubernetes v1.25, OpenShift with SCCs",
-    "summary": "",
+    "summary": "Pod failed to mount PVC due to restricted SELinux type in pod’s security context.",
     "whatHappened": "OpenShift SCC prevented the pod from mounting a volume with a mismatched SELinux context.",
     "diagnosisSteps": [
       "Events: permission denied during mount.",
@@ -7329,7 +7329,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeProvisioner Race Condition Leads to Duplicated PVC",
     "category": "Storage",
     "environment": "Kubernetes v1.24, CSI with dynamic provisioning",
-    "summary": "",
+    "summary": "Simultaneous provisioning requests created duplicate PVs for a single PVC.",
     "whatHappened": "PVC provisioning logic retried rapidly, and CSI provisioner created two volumes.",
     "diagnosisSteps": [
       "Observed two PVs with same claimRef.",
@@ -7348,7 +7348,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Bound to Deleted PV After Restore",
     "category": "Storage",
     "environment": "Kubernetes v1.25, Velero restore with CSI driver",
-    "summary": "",
+    "summary": "Restored PVC bound to a PV that no longer existed, causing stuck pods.",
     "whatHappened": "During a cluster restore, PVC definitions were restored before their associated PVs. The missing PV names were still referenced.",
     "diagnosisSteps": [
       "PVCs stuck in Pending state.",
@@ -7368,7 +7368,7 @@ export const scenarios: Scenario[] = [
     "title": "Unexpected Volume Type Defaults to HDD Instead of SSD",
     "category": "Storage",
     "environment": "Kubernetes v1.24, GKE with dynamic provisioning",
-    "summary": "",
+    "summary": "Volumes defaulted to HDD even though workloads needed SSD.",
     "whatHappened": "StorageClass used default pd-standard instead of pd-ssd.",
     "diagnosisSteps": [
       "IOPS metrics showed high latency.",
@@ -7387,7 +7387,7 @@ export const scenarios: Scenario[] = [
     "title": "ReclaimPolicy Retain Caused Resource Leaks",
     "category": "Storage",
     "environment": "Kubernetes v1.22, bare-metal CSI",
-    "summary": "",
+    "summary": "Deleting PVCs left behind unused PVs and disks.",
     "whatHappened": "PVs had ReclaimPolicy: Retain, so disks weren’t deleted.",
     "diagnosisSteps": [
       "PVs stuck in Released state.",
@@ -7406,7 +7406,7 @@ export const scenarios: Scenario[] = [
     "title": "ReadWriteOnce PVC Mounted by Multiple Pods",
     "category": "Storage",
     "environment": "Kubernetes v1.23, AWS EBS",
-    "summary": "",
+    "summary": "Attempt to mount a ReadWriteOnce PVC on two pods in different AZs failed silently.",
     "whatHappened": "Pods scheduled across AZs                                                    ; EBS volume couldn't attach to multiple nodes.",
     "diagnosisSteps": [
       "Pods stuck in ContainerCreating.",
@@ -7425,7 +7425,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeAttach Race on StatefulSet Rolling Update",
     "category": "Storage",
     "environment": "Kubernetes v1.26, StatefulSet with CSI driver",
-    "summary": "",
+    "summary": "Volume attach operations failed during parallel pod updates.",
     "whatHappened": "Two pods in a StatefulSet update attempted to use the same PVC briefly due to quick scale down/up.",
     "diagnosisSteps": [
       "Events: Multi-Attach error for volume.",
@@ -7444,7 +7444,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver CrashLoop Due to Missing Node Labels",
     "category": "Storage",
     "environment": "Kubernetes v1.24, OpenEBS CSI",
-    "summary": "",
+    "summary": "CSI sidecars failed to initialize due to missing node topology labels.",
     "whatHappened": "A node upgrade wiped custom labels needed for topology-aware provisioning.",
     "diagnosisSteps": [
       "Logs: missing topology key node label.",
@@ -7462,7 +7462,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Deleted While Volume Still Mounted",
     "category": "Storage",
     "environment": "Kubernetes v1.22, on-prem CSI",
-    "summary": "",
+    "summary": "PVC deletion didn’t unmount volume due to finalizer stuck on pod.",
     "whatHappened": "Pod was terminating but stuck, so volume detach never happened.",
     "diagnosisSteps": [
       "PVC deleted, but disk remained attached.",
@@ -7481,7 +7481,7 @@ export const scenarios: Scenario[] = [
     "title": "In-Tree Volume Plugin Migration Caused Downtime",
     "category": "Storage",
     "environment": "Kubernetes v1.25, GKE",
-    "summary": "",
+    "summary": "GCE PD plugin migration to CSI caused volume mount errors.",
     "whatHappened": "After upgrade, in-tree plugin was disabled but CSI driver wasn’t fully configured.",
     "diagnosisSteps": [
       "Events: failed to provision volume.",
@@ -7499,7 +7499,7 @@ export const scenarios: Scenario[] = [
     "title": "Overprovisioned Thin Volumes Hit Underlying Limit",
     "category": "Storage",
     "environment": "Kubernetes v1.24, LVM-based CSI",
-    "summary": "",
+    "summary": "Thin-provisioned volumes ran out of physical space, affecting all pods.",
     "whatHappened": "Overcommitted volumes filled up the disk pool.",
     "diagnosisSteps": [
       "df on host showed 100% disk.",
@@ -7518,7 +7518,7 @@ export const scenarios: Scenario[] = [
     "title": "Dynamic Provisioning Failure Due to Quota Exhaustion",
     "category": "Storage",
     "environment": "Kubernetes v1.26, vSphere CSI",
-    "summary": "",
+    "summary": "PVCs failed to provision silently due to exhausted storage quota.",
     "whatHappened": "Storage backend rejected volume create requests.",
     "diagnosisSteps": [
       "PVC stuck in Pending.",
@@ -7537,7 +7537,7 @@ export const scenarios: Scenario[] = [
     "title": "PVC Resizing Didn’t Expand Filesystem Automatically",
     "category": "Storage",
     "environment": "Kubernetes v1.24, AWS EBS, ext4 filesystem",
-    "summary": "",
+    "summary": "PVC was resized but the pod’s filesystem didn’t reflect the new size.",
     "whatHappened": "The PersistentVolume was expanded, but the pod using it didn’t see the increased size until restarted.",
     "diagnosisSteps": [
       "df -h inside the pod showed old capacity.",
@@ -7556,7 +7556,7 @@ export const scenarios: Scenario[] = [
     "title": "StatefulSet Pods Lost Volume Data After Node Reboot",
     "category": "Storage",
     "environment": "Kubernetes v1.22, local-path-provisioner",
-    "summary": "",
+    "summary": "Node reboots caused StatefulSet volumes to disappear due to ephemeral local storage.",
     "whatHappened": "After node maintenance, pods were rescheduled and couldn’t find their PVC data.",
     "diagnosisSteps": [
       "ls inside pod showed empty volumes.",
@@ -7574,7 +7574,7 @@ export const scenarios: Scenario[] = [
     "title": "VolumeSnapshots Failed to Restore with Immutable Fields",
     "category": "Storage",
     "environment": "Kubernetes v1.25, VolumeSnapshot API",
-    "summary": "",
+    "summary": "Restore operation failed due to immutable PVC spec fields like access mode.",
     "whatHappened": "Attempted to restore snapshot into a PVC with modified parameters.",
     "diagnosisSteps": [
       "Error: cannot change accessMode after creation."
@@ -7592,7 +7592,7 @@ export const scenarios: Scenario[] = [
     "title": "GKE Autopilot PVCs Stuck Due to Resource Class Conflict",
     "category": "Storage",
     "environment": "GKE Autopilot, dynamic PVC provisioning",
-    "summary": "",
+    "summary": "PVCs remained in Pending state due to missing resource class binding.",
     "whatHappened": "GKE Autopilot required both PVC and pod to define compatible resourceClassName.",
     "diagnosisSteps": [
       "Events: No matching ResourceClass.",
@@ -7611,7 +7611,7 @@ export const scenarios: Scenario[] = [
     "title": "Cross-Zone Volume Scheduling Failed in Regional Cluster",
     "category": "Storage",
     "environment": "Kubernetes v1.24, GKE regional cluster",
-    "summary": "",
+    "summary": "Pods failed to schedule because volumes were provisioned in a different zone than the node.",
     "whatHappened": "Regional cluster scheduling pods to one zone while PVCs were created in another.",
     "diagnosisSteps": [
       "Events: FailedScheduling: volume not attachable."
@@ -7629,7 +7629,7 @@ export const scenarios: Scenario[] = [
     "title": "Stuck Finalizers on Deleted PVCs Blocking Namespace Deletion",
     "category": "Storage",
     "environment": "Kubernetes v1.22, CSI driver",
-    "summary": "",
+    "summary": "Finalizers on PVCs blocked namespace deletion for hours.",
     "whatHappened": "Namespace was stuck in Terminating due to PVCs with finalizers not being properly removed.",
     "diagnosisSteps": [
       "Checked PVC YAML: finalizers section present.",
@@ -7648,7 +7648,7 @@ export const scenarios: Scenario[] = [
     "title": "CSI Driver Upgrade Corrupted Volume Attachments",
     "category": "Storage",
     "environment": "Kubernetes v1.23, OpenEBS",
-    "summary": "",
+    "summary": "CSI driver upgrade introduced a regression causing volume mounts to fail.",
     "whatHappened": "After a helm-based CSI upgrade, pods couldn’t mount volumes.",
     "diagnosisSteps": [
       "Logs: mount timeout errors.",
@@ -7667,7 +7667,7 @@ export const scenarios: Scenario[] = [
     "title": "Stale Volume Handles After Disaster Recovery Cutover",
     "category": "Storage",
     "environment": "Kubernetes v1.25, Velero restore to DR cluster",
-    "summary": "",
+    "summary": "Stale volume handles caused new PVCs to fail provisioning.",
     "whatHappened": "Restored PVs referenced non-existent volume handles in new cloud region.",
     "diagnosisSteps": [
       "CSI logs: volume handle not found.",
@@ -7686,7 +7686,7 @@ export const scenarios: Scenario[] = [
     "title": "Application Wrote Outside Mounted Path and Lost Data",
     "category": "Storage",
     "environment": "Kubernetes v1.24, default mountPath",
-    "summary": "",
+    "summary": "Application wrote logs to /tmp, not mounted volume, causing data loss on pod eviction.",
     "whatHappened": "Application configuration didn’t match the PVC mount path.",
     "diagnosisSteps": [
       "Pod deleted → logs disappeared.",
@@ -7705,7 +7705,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Autoscaler Deleted Nodes with Mounted Volumes",
     "category": "Storage",
     "environment": "Kubernetes v1.23, AWS EKS with CA",
-    "summary": "",
+    "summary": "Cluster Autoscaler aggressively removed nodes with attached volumes, causing workload restarts.",
     "whatHappened": "Nodes were deemed underutilized and deleted while volumes were still mounted.",
     "diagnosisSteps": [
       "Volumes detached mid-write, causing file corruption.",
@@ -7724,7 +7724,7 @@ export const scenarios: Scenario[] = [
     "title": "HPA Didn't Scale Due to Missing Metrics Server",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Minikube",
-    "summary": "",
+    "summary": "Horizontal Pod Autoscaler (HPA) didn’t scale pods as expected.",
     "whatHappened": "HPA showed unknown metrics and pod count remained constant despite CPU stress.",
     "diagnosisSteps": [
       "kubectl get hpa showed Metrics not available.",
@@ -7743,7 +7743,7 @@ export const scenarios: Scenario[] = [
     "title": "CPU Throttling Prevented Effective Autoscaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, EKS, Burstable QoS",
-    "summary": "",
+    "summary": "Application CPU throttled even under low usage, leading to delayed scaling.",
     "whatHappened": "HPA didn’t trigger scale-up due to misleading low CPU usage stats.",
     "diagnosisSteps": [
       "Metrics showed low CPU, but app performance was poor.",
@@ -7763,7 +7763,7 @@ export const scenarios: Scenario[] = [
     "title": "Overprovisioned Pods Starved the Cluster",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.21, on-prem",
-    "summary": "",
+    "summary": "Aggressively overprovisioned pod resources led to failed scheduling and throttling.",
     "whatHappened": "Apps were deployed with excessive CPU/memory, blocking HPA and new workloads.",
     "diagnosisSteps": [
       "kubectl describe node: Insufficient CPU errors.",
@@ -7781,7 +7781,7 @@ export const scenarios: Scenario[] = [
     "title": "HPA and VPA Conflicted, Causing Flapping",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, GKE",
-    "summary": "",
+    "summary": "HPA scaled replicas based on CPU while VPA changed pod resources dynamically, creating instability.",
     "whatHappened": "HPA scaled up, VPA shrank resources → load spike → HPA scaled again.",
     "diagnosisSteps": [
       "Logs showed frequent pod terminations and creations.",
@@ -7800,7 +7800,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Autoscaler Didn't Scale Due to Pod Affinity Rules",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Workloads couldn't be scheduled and CA didn’t scale nodes because affinity rules restricted placement.",
     "whatHappened": "Pods failed to schedule and were stuck in Pending, but no scale-out occurred.",
     "diagnosisSteps": [
       "Events: FailedScheduling with affinity violations.",
@@ -7819,7 +7819,7 @@ export const scenarios: Scenario[] = [
     "title": "Load Test Crashed Cluster Due to Insufficient Node Quotas",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, AKS",
-    "summary": "",
+    "summary": "Stress test resulted in API server crash due to unthrottled pod burst.",
     "whatHappened": "Locust load test created hundreds of pods, exceeding node count limits.",
     "diagnosisSteps": [
       "API server latency spiked, etcd logs flooded.",
@@ -7838,7 +7838,7 @@ export const scenarios: Scenario[] = [
     "title": "Scale-To-Zero Caused Cold Starts and SLA Violations",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, KEDA + Knative",
-    "summary": "",
+    "summary": "Pods scaled to zero, but requests during cold start breached SLA.",
     "whatHappened": "First request after inactivity hit cold-start delay of ~15s.",
     "diagnosisSteps": [
       "Prometheus response latency showed spikes after idle periods.",
@@ -7856,7 +7856,7 @@ export const scenarios: Scenario[] = [
     "title": "Misconfigured Readiness Probe Blocked HPA Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, DigitalOcean",
-    "summary": "",
+    "summary": "HPA didn’t scale pods because readiness probes failed and metrics were not reported.",
     "whatHappened": "Misconfigured probe returned 404, making pods invisible to HPA.",
     "diagnosisSteps": [
       "kubectl describe pod: readiness failed.",
@@ -7875,7 +7875,7 @@ export const scenarios: Scenario[] = [
     "title": "Custom Metrics Adapter Crashed, Breaking Custom HPA",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Prometheus Adapter",
-    "summary": "",
+    "summary": "Custom HPA didn’t function after metrics adapter pod crashed silently.",
     "whatHappened": "HPA relying on Prometheus metrics didn't scale for hours.",
     "diagnosisSteps": [
       "kubectl get hpa: metric unavailable.",
@@ -7894,7 +7894,7 @@ export const scenarios: Scenario[] = [
     "title": "Application Didn’t Handle Scale-In Gracefully",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Azure AKS",
-    "summary": "",
+    "summary": "App lost in-flight requests during scale-down, causing 5xx spikes.",
     "whatHappened": "Pods were terminated abruptly during autoscaling down, mid-request.",
     "diagnosisSteps": [
       "Observed 502/504 errors in logs during scale-in events.",
@@ -7913,7 +7913,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Autoscaler Ignored Pod PriorityClasses",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, AWS EKS with PriorityClasses",
-    "summary": "",
+    "summary": "Low-priority workloads blocked scaling of high-priority ones due to misconfigured Cluster Autoscaler.",
     "whatHappened": "High-priority pods remained pending, even though Cluster Autoscaler was active.",
     "diagnosisSteps": [
       "kubectl get pods --all-namespaces | grep Pending showed stuck critical workloads.",
@@ -7932,7 +7932,7 @@ export const scenarios: Scenario[] = [
     "title": "ReplicaSet Misalignment Led to Excessive Scale-Out",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, GKE",
-    "summary": "",
+    "summary": "A stale ReplicaSet with label mismatches caused duplicate pod scale-out.",
     "whatHappened": "Deployment scaled twice the required pod count after an upgrade.",
     "diagnosisSteps": [
       "kubectl get replicasets showed multiple active sets with overlapping match labels.",
@@ -7951,7 +7951,7 @@ export const scenarios: Scenario[] = [
     "title": "StatefulSet Didn't Scale Due to PodDisruptionBudget",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, AKS",
-    "summary": "",
+    "summary": "StatefulSet couldn’t scale-in during node pressure due to a restrictive PDB.",
     "whatHappened": "Nodes under memory pressure tried to evict pods, but eviction was blocked.",
     "diagnosisSteps": [
       "Checked kubectl describe pdb and kubectl get evictions.",
@@ -7970,7 +7970,7 @@ export const scenarios: Scenario[] = [
     "title": "Horizontal Pod Autoscaler Triggered by Wrong Metric",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, DigitalOcean",
-    "summary": "",
+    "summary": "HPA used memory instead of CPU, causing unnecessary scale-ups.",
     "whatHappened": "Application scaled even under light CPU usage due to memory caching behavior.",
     "diagnosisSteps": [
       "HPA target: memory utilization.",
@@ -7989,7 +7989,7 @@ export const scenarios: Scenario[] = [
     "title": "Prometheus Scraper Bottlenecked Custom HPA Metrics",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, custom metrics + Prometheus Adapter",
-    "summary": "",
+    "summary": "Delays in Prometheus scraping caused lag in HPA reactions.",
     "whatHappened": "HPA lagged 1–2 minutes behind actual load spike.",
     "diagnosisSteps": [
       "prometheus-adapter logs showed stale data timestamps.",
@@ -8008,7 +8008,7 @@ export const scenarios: Scenario[] = [
     "title": "Kubernetes Downscaled During Rolling Update",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, on-prem",
-    "summary": "",
+    "summary": "Pods were prematurely scaled down during rolling deployment.",
     "whatHappened": "Rolling update caused a drop in available replicas, triggering autoscaler.",
     "diagnosisSteps": [
       "Observed spike in 5xx errors during update.",
@@ -8027,7 +8027,7 @@ export const scenarios: Scenario[] = [
     "title": "KEDA Failed to Scale on Kafka Lag Metric",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, KEDA + Kafka",
-    "summary": "",
+    "summary": "Consumers didn’t scale out despite Kafka topic lag.",
     "whatHappened": "High message lag persisted but consumer replicas remained at baseline.",
     "diagnosisSteps": [
       "kubectl get scaledobject showed no trigger activation.",
@@ -8046,7 +8046,7 @@ export const scenarios: Scenario[] = [
     "title": "Spike in Load Exceeded Pod Init Time",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, self-hosted",
-    "summary": "",
+    "summary": "Sudden burst of traffic overwhelmed services due to slow pod boot time.",
     "whatHappened": "HPA triggered scale-out, but pods took too long to start. Users got errors.",
     "diagnosisSteps": [
       "Noticed gap between scale-out and readiness.",
@@ -8065,7 +8065,7 @@ export const scenarios: Scenario[] = [
     "title": "Overuse of Liveness Probes Disrupted Load Balance",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.21, bare metal",
-    "summary": "",
+    "summary": "Misfiring liveness probes killed healthy pods during load test.",
     "whatHappened": "Sudden scale-out introduced new pods, which were killed due to false negatives on liveness probes.",
     "diagnosisSteps": [
       "Pod logs showed probe failures under high CPU.",
@@ -8084,7 +8084,7 @@ export const scenarios: Scenario[] = [
     "title": "Scale-In Happened Before Queue Was Drained",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, RabbitMQ + consumers",
-    "summary": "",
+    "summary": "Consumers scaled in while queue still had unprocessed messages.",
     "whatHappened": "Queue depth remained, but pods were terminated.",
     "diagnosisSteps": [
       "Observed message backlog after autoscaler scale-in.",
@@ -8103,7 +8103,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Drain Race Condition During Scale Down",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, GKE",
-    "summary": "",
+    "summary": "Node drain raced with pod termination, causing pod loss.",
     "whatHappened": "Pods were terminated while the node was still draining, leading to data loss.",
     "diagnosisSteps": [
       "kubectl describe node showed multiple eviction races.",
@@ -8122,7 +8122,7 @@ export const scenarios: Scenario[] = [
     "title": "HPA Disabled Due to Missing Resource Requests",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, AWS EKS",
-    "summary": "",
+    "summary": "Horizontal Pod Autoscaler (HPA) failed to trigger because resource requests weren’t set.",
     "whatHappened": "HPA couldn’t scale pods up despite high traffic due to missing CPU/memory resource requests.",
     "diagnosisSteps": [
       "kubectl describe deployment revealed missing resources.requests.",
@@ -8141,7 +8141,7 @@ export const scenarios: Scenario[] = [
     "title": "Unexpected Overprovisioning of Pods",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, DigitalOcean",
-    "summary": "",
+    "summary": "Unnecessary pod scaling due to misconfigured resource limits.",
     "whatHappened": "Pods scaled up unnecessarily due to excessively high resource limits.",
     "diagnosisSteps": [
       "HPA logs showed frequent scale-ups even during low load.",
@@ -8160,7 +8160,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaler Failed During StatefulSet Upgrade",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, AKS",
-    "summary": "",
+    "summary": "Horizontal scaling issues occurred during rolling upgrade of StatefulSet.",
     "whatHappened": "StatefulSet failed to scale out during a rolling upgrade, causing delayed availability of new pods.",
     "diagnosisSteps": [
       "Observed kubectl get pods showing delayed stateful pod restarts.",
@@ -8179,7 +8179,7 @@ export const scenarios: Scenario[] = [
     "title": "Inadequate Load Distribution in a Multi-AZ Setup",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.27, AWS EKS",
-    "summary": "",
+    "summary": "Load balancing wasn’t even across availability zones, leading to inefficient scaling.",
     "whatHappened": "More traffic hit one availability zone (AZ), causing scaling delays in the other AZs.",
     "diagnosisSteps": [
       "Analyzed kubectl describe svc and found skewed traffic distribution.",
@@ -8198,7 +8198,7 @@ export const scenarios: Scenario[] = [
     "title": "Downscale Too Aggressive During Traffic Dips",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, GCP",
-    "summary": "",
+    "summary": "Autoscaler scaled down too aggressively during short traffic dips, causing pod churn.",
     "whatHappened": "Traffic decreased briefly, triggering a scale-in, only for the traffic to spike again.",
     "diagnosisSteps": [
       "HPA scaled down to 0 replicas during a brief traffic lull.",
@@ -8217,7 +8217,7 @@ export const scenarios: Scenario[] = [
     "title": "Insufficient Scaling Under High Ingress Traffic",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, NGINX Ingress Controller",
-    "summary": "",
+    "summary": "Pod autoscaling didn’t trigger in time to handle high ingress traffic.",
     "whatHappened": "Ingress traffic surged, but HPA didn’t trigger additional pods in time.",
     "diagnosisSteps": [
       "Checked HPA configuration and metrics, found that HPA was based on CPU usage, not ingress traffic."
@@ -8235,7 +8235,7 @@ export const scenarios: Scenario[] = [
     "title": "Nginx Ingress Controller Hit Rate Limit on External API",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, AWS EKS",
-    "summary": "",
+    "summary": "Rate limits were hit on an external API during traffic surge, affecting service scaling.",
     "whatHappened": "Nginx Ingress Controller was rate-limited by an external API during a traffic surge.",
     "diagnosisSteps": [
       "Traffic logs showed 429 status codes for external API calls.",
@@ -8254,7 +8254,7 @@ export const scenarios: Scenario[] = [
     "title": "Resource Constraints on Node Impacted Pod Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, on-prem",
-    "summary": "",
+    "summary": "Pod scaling failed due to resource constraints on nodes during high load.",
     "whatHappened": "Autoscaler triggered, but nodes lacked available resources, preventing new pods from starting.",
     "diagnosisSteps": [
       "kubectl describe nodes showed resource exhaustion.",
@@ -8273,7 +8273,7 @@ export const scenarios: Scenario[] = [
     "title": "Memory Leak in Application Led to Excessive Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, Azure AKS",
-    "summary": "",
+    "summary": "A memory leak in the app led to unnecessary scaling, causing resource exhaustion.",
     "whatHappened": "Application memory usage grew uncontrollably, causing HPA to continuously scale the pods.",
     "diagnosisSteps": [
       "kubectl top pods showed continuously increasing memory usage.",
@@ -8292,7 +8292,7 @@ export const scenarios: Scenario[] = [
     "title": "Inconsistent Pod Scaling During Burst Traffic",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, AWS EKS",
-    "summary": "",
+    "summary": "Pod scaling inconsistently triggered during burst traffic spikes, causing service delays.",
     "whatHappened": "A traffic burst caused sporadic scaling events that didn’t meet demand, leading to delayed responses.",
     "diagnosisSteps": [
       "Observed scaling logs that showed pod scaling lagged behind traffic spikes.",
@@ -8311,7 +8311,7 @@ export const scenarios: Scenario[] = [
     "title": "Auto-Scaling Hit Limits with StatefulSet",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, GCP",
-    "summary": "",
+    "summary": "StatefulSet scaling hit limits due to pod affinity constraints.",
     "whatHappened": "Auto-scaling did not trigger correctly due to pod affinity constraints limiting scaling.",
     "diagnosisSteps": [
       "Found pod affinity rules restricted the number of eligible nodes for scaling.",
@@ -8330,7 +8330,7 @@ export const scenarios: Scenario[] = [
     "title": "Cross-Cluster Autoscaling Failures",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.21, Azure AKS",
-    "summary": "",
+    "summary": "Autoscaling failed across clusters due to inconsistent resource availability between regions.",
     "whatHappened": "Horizontal scaling issues arose when pods scaled across regions, leading to resource exhaustion.",
     "diagnosisSteps": [
       "Checked cross-cluster communication and found uneven resource distribution.",
@@ -8349,7 +8349,7 @@ export const scenarios: Scenario[] = [
     "title": "Service Disruption During Auto-Scaling of StatefulSet",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, AWS EKS",
-    "summary": "",
+    "summary": "StatefulSet failed to scale properly during maintenance, causing service disruption.",
     "whatHappened": "StatefulSet pods failed to scale correctly during a rolling update due to scaling policies not considering pod states.",
     "diagnosisSteps": [
       "Logs revealed pods were stuck in a Pending state during scale-up.",
@@ -8368,7 +8368,7 @@ export const scenarios: Scenario[] = [
     "title": "Unwanted Pod Scale-down During Quiet Periods",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, GKE",
-    "summary": "",
+    "summary": "Autoscaler scaled down too aggressively during periods of low traffic, leading to resource shortages during traffic bursts.",
     "whatHappened": "Autoscaler reduced pod count during a quiet period, but didn’t scale back up quickly enough when traffic surged.",
     "diagnosisSteps": [
       "Investigated autoscaler settings and found low scaleDown stabilization thresholds.",
@@ -8387,7 +8387,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Autoscaler Inconsistencies with Node Pools",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, GCP",
-    "summary": "",
+    "summary": "Cluster Autoscaler failed to trigger due to node pool constraints.",
     "whatHappened": "Nodes were not scaled when needed because Cluster Autoscaler couldn’t add resources due to predefined node pool limits.",
     "diagnosisSteps": [
       "Examined autoscaler logs, revealing node pool size limits were blocking node creation.",
@@ -8406,7 +8406,7 @@ export const scenarios: Scenario[] = [
     "title": "Disrupted Service During Pod Autoscaling in StatefulSet",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, AWS EKS",
-    "summary": "",
+    "summary": "Pod autoscaling in a StatefulSet led to disrupted service due to the stateful nature of the application.",
     "whatHappened": "Scaling actions impacted the stateful application, causing data integrity issues.",
     "diagnosisSteps": [
       "Reviewed StatefulSet logs and found missing data after scale-ups.",
@@ -8424,7 +8424,7 @@ export const scenarios: Scenario[] = [
     "title": "Slow Pod Scaling During High Load",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, DigitalOcean",
-    "summary": "",
+    "summary": "Autoscaling pods didn’t trigger quickly enough during sudden high-load events, causing delays.",
     "whatHappened": "Scaling didn’t respond fast enough during high load, leading to poor user experience.",
     "diagnosisSteps": [
       "Analyzed HPA logs and metrics, which showed a delayed response to traffic spikes.",
@@ -8443,7 +8443,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaler Skipped Scale-up Due to Incorrect Metric",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Autoscaler skipped scale-up because it was using the wrong metric for scaling.",
     "whatHappened": "HPA was using memory usage as the metric, but CPU usage was the actual bottleneck.",
     "diagnosisSteps": [
       "HPA logs showed autoscaler ignored CPU metrics in favor of memory.",
@@ -8462,7 +8462,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Inhibited Due to Pending Jobs in Queue",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Azure AKS",
-    "summary": "",
+    "summary": "Pod scaling was delayed because jobs in the queue were not processed fast enough.",
     "whatHappened": "A backlog of jobs created delays in scaling, as the job queue was overfilled.",
     "diagnosisSteps": [
       "Examined job logs, which confirmed long processing times for queued tasks.",
@@ -8481,7 +8481,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Delayed Due to Incorrect Resource Requests",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, AWS EKS",
-    "summary": "",
+    "summary": "Pod scaling was delayed because of incorrectly set resource requests, leading to resource over-provisioning.",
     "whatHappened": "Pods were scaled up, but they failed to start due to overly high resource requests that exceeded available node capacity.",
     "diagnosisSteps": [
       "Checked pod resource requests and found they were too high for the available nodes.",
@@ -8500,7 +8500,7 @@ export const scenarios: Scenario[] = [
     "title": "Unexpected Pod Termination Due to Scaling Policy",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, Google Cloud",
-    "summary": "",
+    "summary": "Pods were unexpectedly terminated during scale-down due to aggressive scaling policies.",
     "whatHappened": "Scaling policy was too aggressive, and pods were removed even though they were still handling active traffic.",
     "diagnosisSteps": [
       "Reviewed scaling policy logs and found that the scaleDown strategy was too aggressive.",
@@ -8519,7 +8519,7 @@ export const scenarios: Scenario[] = [
     "title": "Unstable Load Balancing During Scaling Events",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Azure AKS",
-    "summary": "",
+    "summary": "Load balancing issues surfaced during scaling, leading to uneven distribution of traffic.",
     "whatHappened": "As new pods were scaled up, traffic was not distributed evenly across them, causing some pods to be overwhelmed while others were underutilized.",
     "diagnosisSteps": [
       "Investigated the load balancing configuration and found that the load balancer didn't adapt quickly to scaling changes.",
@@ -8538,7 +8538,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaling Ignored Due to Resource Quotas",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, IBM Cloud",
-    "summary": "",
+    "summary": "Resource quotas prevented autoscaling from triggering despite high load.",
     "whatHappened": "Although resource usage was high, autoscaling did not trigger because the namespace resource quota was already close to being exceeded.",
     "diagnosisSteps": [
       "Reviewed quota settings and found that they limited pod creation in the namespace.",
@@ -8557,7 +8557,7 @@ export const scenarios: Scenario[] = [
     "title": "Delayed Scaling Response to Traffic Spike",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, GCP",
-    "summary": "",
+    "summary": "Scaling took too long to respond during a traffic spike, leading to degraded service.",
     "whatHappened": "Traffic surged unexpectedly, but the Horizontal Pod Autoscaler (HPA) was slow to scale up, leading to service delays.",
     "diagnosisSteps": [
       "Reviewed HPA logs and found that the scaling threshold was too high for the initial traffic spike.",
@@ -8576,7 +8576,7 @@ export const scenarios: Scenario[] = [
     "title": "CPU Utilization-Based Scaling Did Not Trigger for High Memory Usage",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Azure AKS",
-    "summary": "",
+    "summary": "Scaling based on CPU utilization did not trigger when the issue was related to high memory usage.",
     "whatHappened": "Despite high memory usage, CPU-based scaling did not trigger any scaling events, causing performance degradation.",
     "diagnosisSteps": [
       "Analyzed pod metrics and found that memory was saturated while CPU utilization was low.",
@@ -8595,7 +8595,7 @@ export const scenarios: Scenario[] = [
     "title": "Inefficient Horizontal Scaling of StatefulSets",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, GKE",
-    "summary": "",
+    "summary": "Horizontal scaling of StatefulSets was inefficient due to StatefulSet’s inherent limitations.",
     "whatHappened": "Scaling horizontally caused issues with pod state and data integrity, as StatefulSet is not designed for horizontal scaling in certain scenarios.",
     "diagnosisSteps": [
       "Found that scaling horizontally caused pods to be spread across multiple nodes, breaking data consistency.",
@@ -8614,7 +8614,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaler Skipped Scaling Events Due to Flaky Metrics",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Autoscaler skipped scaling events due to unreliable metrics from external monitoring tools.",
     "whatHappened": "Metrics from external monitoring systems were inconsistent, causing scaling decisions to be missed.",
     "diagnosisSteps": [
       "Checked the external monitoring tool integration with Kubernetes metrics and found data inconsistencies.",
@@ -8633,7 +8633,7 @@ export const scenarios: Scenario[] = [
     "title": "Delayed Pod Creation Due to Node Affinity Misconfigurations",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Google Cloud",
-    "summary": "",
+    "summary": "Pods were delayed in being created due to misconfigured node affinity rules during scaling events.",
     "whatHappened": "Node affinity rules were too strict, leading to delays in pod scheduling when scaling up.",
     "diagnosisSteps": [
       "Reviewed node affinity rules and found they were unnecessarily restricting pod scheduling.",
@@ -8652,7 +8652,7 @@ export const scenarios: Scenario[] = [
     "title": "Excessive Scaling During Short-Term Traffic Spikes",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, AWS EKS",
-    "summary": "",
+    "summary": "Autoscaling triggered excessive scaling during short-term traffic spikes, leading to unnecessary resource usage.",
     "whatHappened": "Autoscaler responded too aggressively to short bursts of traffic, over-provisioning resources.",
     "diagnosisSteps": [
       "Analyzed autoscaler logs and found it responded to brief traffic spikes with unnecessary scaling.",
@@ -8671,7 +8671,7 @@ export const scenarios: Scenario[] = [
     "title": "Inconsistent Scaling Due to Misconfigured Horizontal Pod Autoscaler",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, Azure AKS",
-    "summary": "",
+    "summary": "Horizontal Pod Autoscaler (HPA) inconsistently scaled pods based on incorrect metric definitions.",
     "whatHappened": "HPA failed to scale up correctly because it was configured to trigger based on custom metrics, but the metric source was unreliable.",
     "diagnosisSteps": [
       "Reviewed HPA configuration and identified incorrect metric configuration.",
@@ -8690,7 +8690,7 @@ export const scenarios: Scenario[] = [
     "title": "Load Balancer Overload After Quick Pod Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "Load balancer failed to distribute traffic effectively after a large pod scaling event, leading to overloaded pods.",
     "whatHappened": "Pods were scaled up quickly, but the load balancer did not reassign traffic in a timely manner, causing some pods to receive too much traffic while others were underutilized.",
     "diagnosisSteps": [
       "Investigated the load balancer configuration and found that traffic routing did not adjust immediately after the scaling event.",
@@ -8709,7 +8709,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaling Failed During Peak Traffic Periods",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, AWS EKS",
-    "summary": "",
+    "summary": "Autoscaling was ineffective during peak traffic periods, leading to degraded performance.",
     "whatHappened": "Although traffic spikes were detected, the Horizontal Pod Autoscaler (HPA) failed to scale up the required number of pods in time.",
     "diagnosisSteps": [
       "Analyzed HPA metrics and scaling logs, which revealed that the scaling trigger was set with a high threshold.",
@@ -8728,7 +8728,7 @@ export const scenarios: Scenario[] = [
     "title": "Insufficient Node Resources During Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, IBM Cloud",
-    "summary": "",
+    "summary": "Node resources were insufficient during scaling, leading to pod scheduling failures.",
     "whatHappened": "Pods failed to scale up because there were not enough resources on existing nodes to accommodate them.",
     "diagnosisSteps": [
       "Checked node resource availability and found that there were insufficient CPU or memory resources for the new pods.",
@@ -8747,7 +8747,7 @@ export const scenarios: Scenario[] = [
     "title": "Unpredictable Pod Scaling During Cluster Autoscaler Event",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "Pod scaling was unpredictable during a Cluster Autoscaler event due to a sudden increase in node availability.",
     "whatHappened": "When Cluster Autoscaler added new nodes to the cluster, the autoscaling process became erratic as new pods were scheduled in unpredictable order.",
     "diagnosisSteps": [
       "Analyzed scaling logs and found that new nodes were provisioned, but pod scheduling was not coordinated well with available node resources.",
@@ -8766,7 +8766,7 @@ export const scenarios: Scenario[] = [
     "title": "CPU Resource Over-Commitment During Scale-Up",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, Azure AKS",
-    "summary": "",
+    "summary": "During a scale-up event, CPU resources were over-committed, causing pod performance degradation.",
     "whatHappened": "When scaling up, CPU resources were over-allocated to new pods, leading to performance degradation as existing pods had to share CPU cores.",
     "diagnosisSteps": [
       "Checked CPU resource allocation and found that the new pods had been allocated higher CPU shares than the existing pods, causing resource contention.",
@@ -8785,7 +8785,7 @@ export const scenarios: Scenario[] = [
     "title": "Failure to Scale Due to Horizontal Pod Autoscaler Anomaly",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, AWS EKS",
-    "summary": "",
+    "summary": "Horizontal Pod Autoscaler (HPA) failed to scale up due to a temporary anomaly in the resource metrics.",
     "whatHappened": "HPA failed to trigger a scale-up action during a high traffic period because resource metrics were temporarily inaccurate.",
     "diagnosisSteps": [
       "Checked metrics server logs and found that there was a temporary issue with the metric collection process.",
@@ -8804,7 +8804,7 @@ export const scenarios: Scenario[] = [
     "title": "Memory Pressure Causing Slow Pod Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, IBM Cloud",
-    "summary": "",
+    "summary": "Pod scaling was delayed due to memory pressure in the cluster, causing performance bottlenecks.",
     "whatHappened": "Pods scaled slowly during high memory usage periods because of memory pressure on existing nodes.",
     "diagnosisSteps": [
       "Checked node metrics and found that there was significant memory pressure on the nodes, delaying pod scheduling.",
@@ -8823,7 +8823,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Over-Provisioning During Cluster Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "Nodes were over-provisioned, leading to unnecessary resource wastage during scaling.",
     "whatHappened": "Cluster Autoscaler added more nodes than necessary during scaling events, leading to resource wastage.",
     "diagnosisSteps": [
       "Reviewed the scaling logic and determined that the Autoscaler was provisioning more nodes than required to handle the traffic load.",
@@ -8842,7 +8842,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaler Fails to Handle Node Termination Events Properly",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, Azure AKS",
-    "summary": "",
+    "summary": "Autoscaler did not handle node termination events properly, leading to pod disruptions.",
     "whatHappened": "When nodes were terminated due to failure or maintenance, the autoscaler failed to replace them quickly enough, leading to pod disruption.",
     "diagnosisSteps": [
       "Checked autoscaler logs and found that termination events were not triggering prompt scaling actions.",
@@ -8861,7 +8861,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Failure During Pod Scaling Up",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, AWS EKS",
-    "summary": "",
+    "summary": "Scaling up pods failed when a node was unexpectedly terminated, preventing proper pod scheduling.",
     "whatHappened": "During an autoscaling event, a node was unexpectedly terminated due to cloud infrastructure issues. This caused new pods to fail scheduling as no available node had sufficient resources.",
     "diagnosisSteps": [
       "Checked the node status and found that the node had been terminated by AWS.",
@@ -8880,7 +8880,7 @@ export const scenarios: Scenario[] = [
     "title": "Unstable Scaling During Traffic Spikes",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, Azure AKS",
-    "summary": "",
+    "summary": "Pod scaling became unstable during traffic spikes due to delayed scaling responses.",
     "whatHappened": "During high-traffic periods, HPA (Horizontal Pod Autoscaler) did not scale pods fast enough, leading to slow response times.",
     "diagnosisSteps": [
       "Reviewed HPA logs and metrics and discovered scaling triggers were based on 5-minute intervals, which caused delayed reactions to rapid traffic increases.",
@@ -8899,7 +8899,7 @@ export const scenarios: Scenario[] = [
     "title": "Insufficient Node Pools During Sudden Pod Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Google Cloud",
-    "summary": "",
+    "summary": "Insufficient node pool capacity caused pod scheduling failures during sudden scaling events.",
     "whatHappened": "During a sudden traffic surge, the Horizontal Pod Autoscaler (HPA) scaled the pods, but there weren’t enough nodes available to schedule the new pods.",
     "diagnosisSteps": [
       "Checked the available resources on the nodes and found that node pools were insufficient to accommodate the newly scaled pods.",
@@ -8917,7 +8917,7 @@ export const scenarios: Scenario[] = [
     "title": "Latency Spikes During Horizontal Pod Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, IBM Cloud",
-    "summary": "",
+    "summary": "Latency spikes occurred during horizontal pod scaling due to inefficient pod distribution.",
     "whatHappened": "Horizontal pod scaling caused latency spikes as the traffic was unevenly distributed between pods, some of which were underutilized while others were overloaded.",
     "diagnosisSteps": [
       "Reviewed traffic distribution and pod scheduling, which revealed that the load balancer did not immediately update routing configurations.",
@@ -8936,7 +8936,7 @@ export const scenarios: Scenario[] = [
     "title": "Resource Starvation During Infrequent Scaling Events",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "During infrequent scaling events, resource starvation occurred due to improper resource allocation.",
     "whatHappened": "Infrequent scaling triggered by traffic bursts led to resource starvation on nodes, preventing pod scheduling.",
     "diagnosisSteps": [
       "Analyzed the scaling logs and found that resource allocation during scaling events was inadequate to meet the traffic demands.",
@@ -8954,7 +8954,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaler Delayed Reaction to Load Decrease",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Google Cloud",
-    "summary": "",
+    "summary": "The autoscaler was slow to scale down after a drop in traffic, causing resource wastage.",
     "whatHappened": "After a traffic drop, the Horizontal Pod Autoscaler (HPA) did not scale down quickly enough, leading to resource wastage.",
     "diagnosisSteps": [
       "Checked autoscaler logs and observed that it was still running extra pods even after traffic had reduced significantly.",
@@ -8973,7 +8973,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Resource Exhaustion Due to High Pod Density",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Azure AKS",
-    "summary": "",
+    "summary": "Node resource exhaustion occurred when too many pods were scheduled on a single node, leading to instability.",
     "whatHappened": "During scaling events, pods were scheduled too densely on a single node, causing resource exhaustion and instability.",
     "diagnosisSteps": [
       "Reviewed node resource utilization, which showed that the CPU and memory were maxed out on the affected nodes.",
@@ -8992,7 +8992,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Failure Due to Node Memory Pressure",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "Pod scaling failed due to memory pressure on nodes, preventing new pods from being scheduled.",
     "whatHappened": "Memory pressure on nodes prevented new pods from being scheduled, even though scaling events were triggered.",
     "diagnosisSteps": [
       "Checked memory utilization and found that nodes were operating under high memory pressure, causing scheduling failures.",
@@ -9011,7 +9011,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Latency Due to Slow Node Provisioning",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, IBM Cloud",
-    "summary": "",
+    "summary": "Pod scaling was delayed due to slow node provisioning during cluster scaling events.",
     "whatHappened": "When the cluster scaled up, node provisioning was slow, causing delays in pod scheduling and a degraded user experience.",
     "diagnosisSteps": [
       "Reviewed cluster scaling logs and found that the time taken for new nodes to become available was too long.",
@@ -9030,7 +9030,7 @@ export const scenarios: Scenario[] = [
     "title": "Slow Scaling Response Due to Insufficient Metrics Collection",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "The autoscaling mechanism responded slowly to traffic changes because of insufficient metrics collection.",
     "whatHappened": "The Horizontal Pod Autoscaler (HPA) failed to trigger scaling events quickly enough due to missing or outdated metrics, resulting in delayed scaling during traffic spikes.",
     "diagnosisSteps": [
       "Checked HPA logs and observed that the scaling behavior was delayed, even though CPU and memory usage had surged.",
@@ -9049,7 +9049,7 @@ export const scenarios: Scenario[] = [
     "title": "Node Scaling Delayed Due to Cloud Provider API Limits",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Google Cloud",
-    "summary": "",
+    "summary": "Node scaling was delayed because the cloud provider’s API rate limits were exceeded, preventing automatic node provisioning.",
     "whatHappened": "During a scaling event, the Cloud Provider API rate limits were exceeded, and the Kubernetes Cluster Autoscaler failed to provision new nodes, causing pod scheduling delays.",
     "diagnosisSteps": [
       "Checked the autoscaler logs and found that the scaling action was queued due to API rate limit restrictions.",
@@ -9068,7 +9068,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Overload Due to High Replica Count",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Azure AKS",
-    "summary": "",
+    "summary": "Pod scaling led to resource overload on nodes due to an excessively high replica count.",
     "whatHappened": "A configuration error caused the Horizontal Pod Autoscaler (HPA) to scale up to an unusually high replica count, leading to CPU and memory overload on the nodes.",
     "diagnosisSteps": [
       "Checked HPA configuration and found that the scaling target was incorrectly set to a high replica count.",
@@ -9086,7 +9086,7 @@ export const scenarios: Scenario[] = [
     "title": "Failure to Scale Down Due to Persistent Idle Pods",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, IBM Cloud",
-    "summary": "",
+    "summary": "Pods failed to scale down during low traffic periods, leading to idle resources consuming cluster capacity.",
     "whatHappened": "During low traffic periods, the Horizontal Pod Autoscaler (HPA) failed to scale down pods because some pods were marked as \"not ready\" but still consuming resources.",
     "diagnosisSteps": [
       "Checked HPA configuration and found that some pods were stuck in a “not ready” state.",
@@ -9105,7 +9105,7 @@ export const scenarios: Scenario[] = [
     "title": "Load Balancer Misrouting After Pod Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, AWS EKS",
-    "summary": "",
+    "summary": "The load balancer routed traffic unevenly after scaling up, causing some pods to become overloaded.",
     "whatHappened": "After pod scaling, the load balancer did not immediately update routing rules, leading to uneven traffic distribution. Some pods became overloaded, while others were underutilized.",
     "diagnosisSteps": [
       "Checked load balancer configuration and found that it had not updated its routing rules after pod scaling.",
@@ -9124,7 +9124,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Autoscaler Not Triggering Under High Load",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Google Cloud",
-    "summary": "",
+    "summary": "The Cluster Autoscaler failed to trigger under high load due to misconfiguration in resource requests.",
     "whatHappened": "Despite a high load on the cluster, the Cluster Autoscaler did not trigger additional nodes due to misconfigured resource requests for pods.",
     "diagnosisSteps": [
       "Reviewed autoscaler logs and resource requests, and discovered that pods were requesting more resources than available on the nodes.",
@@ -9143,7 +9143,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaling Slow Due to Cloud Provider API Delay",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Azure AKS",
-    "summary": "",
+    "summary": "Pod scaling was delayed due to cloud provider API delays during scaling events.",
     "whatHappened": "Scaling actions were delayed because the cloud provider API took longer than expected to provision new resources, affecting pod scheduling.",
     "diagnosisSteps": [
       "Checked the scaling event logs and found that new nodes were being provisioned slowly due to API rate limiting.",
@@ -9162,7 +9162,7 @@ export const scenarios: Scenario[] = [
     "title": "Over-provisioning Resources During Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, IBM Cloud",
-    "summary": "",
+    "summary": "During a scaling event, resources were over-provisioned, causing unnecessary resource consumption and cost.",
     "whatHappened": "During scaling, the resources requested by pods were higher than needed, leading to over-provisioning and unnecessary resource consumption.",
     "diagnosisSteps": [
       "Reviewed pod resource requests and limits, finding that they were set higher than the actual usage.",
@@ -9181,7 +9181,7 @@ export const scenarios: Scenario[] = [
     "title": "Incorrect Load Balancer Configuration After Node Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "After node scaling, the load balancer failed to distribute traffic correctly due to misconfigured settings.",
     "whatHappened": "Scaling added new nodes, but the load balancer configuration was not updated correctly, leading to traffic being routed to the wrong nodes.",
     "diagnosisSteps": [
       "Checked the load balancer configuration and found that it was not dynamically updated after node scaling.",
@@ -9200,7 +9200,7 @@ export const scenarios: Scenario[] = [
     "title": "Incorrect Load Balancer Configuration After Node Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "After node scaling, the load balancer failed to distribute traffic correctly due to misconfigured settings.",
     "whatHappened": "Scaling added new nodes, but the load balancer configuration was not updated correctly, leading to traffic being routed to the wrong nodes.",
     "diagnosisSteps": [
       "Checked the load balancer configuration and found that it was not dynamically updated after node scaling.",
@@ -9219,7 +9219,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaling Disabled Due to Resource Constraints",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, AWS EKS",
-    "summary": "",
+    "summary": "Autoscaling was disabled due to resource constraints on the cluster.",
     "whatHappened": "During a traffic spike, autoscaling was unable to trigger because the cluster had insufficient resources to create new nodes.",
     "diagnosisSteps": [
       "Reviewed Cluster Autoscaler logs and found that the scaling attempt failed because there were not enough resources in the cloud to provision new nodes.",
@@ -9238,7 +9238,7 @@ export const scenarios: Scenario[] = [
     "title": "Resource Fragmentation Leading to Scaling Delays",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Azure AKS",
-    "summary": "",
+    "summary": "Fragmentation of resources across nodes led to scaling delays as new pods could not be scheduled efficiently.",
     "whatHappened": "As the cluster scaled, resources were fragmented across nodes, and new pods couldn't be scheduled quickly due to uneven distribution of CPU and memory.",
     "diagnosisSteps": [
       "Checked pod scheduling logs and found that new pods were not scheduled because of insufficient resources on existing nodes.",
@@ -9257,7 +9257,7 @@ export const scenarios: Scenario[] = [
     "title": "Incorrect Scaling Triggers Due to Misconfigured Metrics Server",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, IBM Cloud",
-    "summary": "",
+    "summary": "The HPA scaled pods incorrectly because the metrics server was misconfigured, leading to wrong scaling triggers.",
     "whatHappened": "The Horizontal Pod Autoscaler (HPA) triggered scaling events based on inaccurate metrics from a misconfigured metrics server, causing pods to scale up and down erratically.",
     "diagnosisSteps": [
       "Reviewed HPA configuration and found that it was using incorrect metrics due to a misconfigured metrics server.",
@@ -9276,7 +9276,7 @@ export const scenarios: Scenario[] = [
     "title": "Autoscaler Misconfigured with Cluster Network Constraints",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Google Cloud",
-    "summary": "",
+    "summary": "The Cluster Autoscaler failed to scale due to network configuration constraints that prevented communication between nodes.",
     "whatHappened": "Cluster Autoscaler tried to add new nodes, but network constraints in the cluster configuration prevented nodes from communicating, causing scaling to fail.",
     "diagnosisSteps": [
       "Checked network logs and found that new nodes could not communicate with the existing cluster.",
@@ -9295,7 +9295,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Delays Due to Resource Quota Exhaustion",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Pod scaling was delayed due to exhausted resource quotas, preventing new pods from being scheduled.",
     "whatHappened": "When attempting to scale, the system could not schedule new pods because the resource quotas for the namespace were exhausted.",
     "diagnosisSteps": [
       "Checked the resource quota settings for the namespace and confirmed that the available resource quota had been exceeded.",
@@ -9314,7 +9314,7 @@ export const scenarios: Scenario[] = [
     "title": "Memory Resource Overload During Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Azure AKS",
-    "summary": "",
+    "summary": "Node memory resources were exhausted during a scaling event, causing pods to crash.",
     "whatHappened": "As the cluster scaled, nodes did not have enough memory resources to accommodate the new pods, causing the pods to crash and leading to high memory pressure.",
     "diagnosisSteps": [
       "Checked pod resource usage and found that memory limits were exceeded, leading to eviction of pods.",
@@ -9333,7 +9333,7 @@ export const scenarios: Scenario[] = [
     "title": "HPA Scaling Delays Due to Incorrect Metric Aggregation",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.26, Google Cloud",
-    "summary": "",
+    "summary": "HPA scaling was delayed due to incorrect aggregation of metrics, leading to slower response to traffic spikes.",
     "whatHappened": "The HPA scaled slowly because the metric server was aggregating metrics at an incorrect rate, delaying scaling actions.",
     "diagnosisSteps": [
       "Reviewed HPA and metrics server configuration, and found incorrect aggregation settings that slowed down metric reporting.",
@@ -9352,7 +9352,7 @@ export const scenarios: Scenario[] = [
     "title": "Scaling Causing Unbalanced Pods Across Availability Zones",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, AWS EKS",
-    "summary": "",
+    "summary": "Pods became unbalanced across availability zones during scaling, leading to higher latency for some traffic.",
     "whatHappened": "During scaling, the pod scheduler did not evenly distribute pods across availability zones, leading to pod concentration in one zone and increased latency in others.",
     "diagnosisSteps": [
       "Reviewed pod placement logs and found that the scheduler was not balancing pods across zones as expected.",
@@ -9371,7 +9371,7 @@ export const scenarios: Scenario[] = [
     "title": "Failed Scaling due to Insufficient Node Capacity for StatefulSets",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Scaling failed because the node pool did not have sufficient capacity to accommodate new StatefulSets.",
     "whatHappened": "When trying to scale a StatefulSet, the system couldn't allocate enough resources on the available nodes, causing scaling to fail.",
     "diagnosisSteps": [
       "Checked resource availability across nodes and found that there wasn’t enough storage or CPU capacity for StatefulSet pods.",
@@ -9390,7 +9390,7 @@ export const scenarios: Scenario[] = [
     "title": "Uncontrolled Resource Spikes After Scaling Large StatefulSets",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, GKE",
-    "summary": "",
+    "summary": "Scaling large StatefulSets led to resource spikes that caused system instability.",
     "whatHappened": "Scaling up a large StatefulSet resulted in CPU and memory spikes that overwhelmed the cluster, causing instability and outages.",
     "diagnosisSteps": [
       "Monitored CPU and memory usage and found that new StatefulSet pods were consuming more resources than anticipated.",
@@ -9409,7 +9409,7 @@ export const scenarios: Scenario[] = [
     "title": "Cluster Autoscaler Preventing Scaling Due to Underutilized Nodes",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, AWS EKS",
-    "summary": "",
+    "summary": "The Cluster Autoscaler prevented scaling because nodes with low utilization were not being considered for scaling.",
     "whatHappened": "The Cluster Autoscaler was incorrectly preventing scaling because it did not consider nodes with low utilization, which were capable of hosting additional pods.",
     "diagnosisSteps": [
       "Reviewed Cluster Autoscaler logs and found that it was incorrectly marking low-usage nodes as “under-utilized” and therefore not scaling the cluster.",
@@ -9428,7 +9428,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Overload During Horizontal Pod Autoscaling Event",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.25, Azure AKS",
-    "summary": "",
+    "summary": "Horizontal Pod Autoscaler (HPA) overloaded the system with pods during a traffic spike, leading to resource exhaustion.",
     "whatHappened": "During a sudden traffic spike, the HPA scaled up the pods rapidly, but the system could not handle the load, leading to pod evictions and service degradation.",
     "diagnosisSteps": [
       "Checked HPA configuration and found that the scaling trigger was set too aggressively, causing rapid pod scaling.",
@@ -9447,7 +9447,7 @@ export const scenarios: Scenario[] = [
     "title": "Unstable Node Performance During Rapid Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Google Kubernetes Engine (GKE)",
-    "summary": "",
+    "summary": "Rapid node scaling led to unstable node performance, impacting pod stability.",
     "whatHappened": "A sudden scaling event resulted in new nodes being added too quickly. The Kubernetes scheduler failed to appropriately distribute workloads across the new nodes, causing instability and resource contention.",
     "diagnosisSteps": [
       "Checked the GKE scaling settings and identified that the node pool autoscaling was triggered aggressively.",
@@ -9466,7 +9466,7 @@ export const scenarios: Scenario[] = [
     "title": "Insufficient Load Balancer Configuration After Scaling Pods",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, Azure Kubernetes Service (AKS)",
-    "summary": "",
+    "summary": "Load balancer configurations failed to scale with the increased number of pods, causing traffic routing issues.",
     "whatHappened": "After scaling the number of pods, the load balancer did not automatically update its configuration, leading to traffic not being evenly distributed and causing backend service outages.",
     "diagnosisSteps": [
       "Checked load balancer settings and found that the auto-scaling rules were not properly linked to the increased pod count.",
@@ -9485,7 +9485,7 @@ export const scenarios: Scenario[] = [
     "title": "Inconsistent Pod Distribution Across Node Pools",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.21, Google Kubernetes Engine (GKE)",
-    "summary": "",
+    "summary": "Pods were not evenly distributed across node pools after scaling, leading to uneven resource utilization.",
     "whatHappened": "After scaling up the pod replicas, some node pools became overloaded while others had little load, causing inefficient resource utilization and application performance degradation.",
     "diagnosisSteps": [
       "Checked pod affinity and anti-affinity rules to ensure there was no misconfiguration.",
@@ -9504,7 +9504,7 @@ export const scenarios: Scenario[] = [
     "title": "HPA and Node Pool Scaling Conflict",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, AWS EKS",
-    "summary": "",
+    "summary": "Horizontal Pod Autoscaler (HPA) conflicted with Node Pool autoscaling, causing resource exhaustion.",
     "whatHappened": "The Horizontal Pod Autoscaler scaled up pods too quickly, but the node pool autoscaler was slow to react, resulting in a resource bottleneck and pod eviction.",
     "diagnosisSteps": [
       "Checked HPA and Cluster Autoscaler logs, where it was found that HPA rapidly increased the number of pods, while the Cluster Autoscaler was not scaling up the nodes at the same pace.",
@@ -9523,7 +9523,7 @@ export const scenarios: Scenario[] = [
     "title": "Delayed Horizontal Pod Scaling During Peak Load",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.20, DigitalOcean Kubernetes (DOKS)",
-    "summary": "",
+    "summary": "HPA scaled too slowly during a traffic surge, leading to application unavailability.",
     "whatHappened": "During a peak load event, HPA failed to scale pods quickly enough to meet the demand, causing slow response times and eventual application downtime.",
     "diagnosisSteps": [
       "Checked HPA metrics and found that it was using average CPU utilization as the scaling trigger, which was too slow to respond to spikes.",
@@ -9542,7 +9542,7 @@ export const scenarios: Scenario[] = [
     "title": "Ineffective Pod Affinity Leading to Overload in Specific Nodes",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.21, AWS EKS",
-    "summary": "",
+    "summary": "Pod affinity settings caused workload imbalance and overloading in specific nodes.",
     "whatHappened": "Pod affinity rules led to pod placement on only certain nodes, causing those nodes to become overloaded while other nodes remained underutilized.",
     "diagnosisSteps": [
       "Reviewed pod affinity settings using kubectl describe and found that the affinity rules were too restrictive, limiting pod placement to certain nodes.",
@@ -9561,7 +9561,7 @@ export const scenarios: Scenario[] = [
     "title": "Inconsistent Pod Scaling Due to Resource Limits",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.24, Google Kubernetes Engine (GKE)",
-    "summary": "",
+    "summary": "Pods were not scaling properly due to overly restrictive resource limits.",
     "whatHappened": "While scaling a service with the Horizontal Pod Autoscaler (HPA), the new pods failed to start due to insufficient resource allocation defined in the pod's resource limits.",
     "diagnosisSteps": [
       "Reviewed the pod specifications and found that the resource requests and limits were set too low, especially during peak usage periods.",
@@ -9580,7 +9580,7 @@ export const scenarios: Scenario[] = [
     "title": "Kubernetes Autoscaler Misbehaving Under Variable Load",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.23, AWS EKS",
-    "summary": "",
+    "summary": "Cluster Autoscaler failed to scale the nodes appropriately due to fluctuating load, causing resource shortages.",
     "whatHappened": "The Cluster Autoscaler was slow to scale out nodes during sudden spikes in load. It scaled too late, causing pod evictions and performance degradation.",
     "diagnosisSteps": [
       "Reviewed Cluster Autoscaler logs and found that scaling decisions were being delayed because the threshold for scale-out was not dynamic enough to respond to sudden traffic spikes.",
@@ -9599,7 +9599,7 @@ export const scenarios: Scenario[] = [
     "title": "Pod Evictions Due to Resource Starvation After Scaling",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.21, Azure Kubernetes Service (AKS)",
-    "summary": "",
+    "summary": "After scaling up the deployment, resource starvation led to pod evictions, resulting in service instability.",
     "whatHappened": "Scaling events resulted in pod evictions due to insufficient resources on nodes to accommodate the increased pod count.",
     "diagnosisSteps": [
       "Checked eviction logs and identified that the eviction was triggered by resource pressure, particularly memory.",
@@ -9618,7 +9618,7 @@ export const scenarios: Scenario[] = [
     "title": "Slow Pod Scaling Due to Insufficient Metrics Collection",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.22, Google Kubernetes Engine (GKE)",
-    "summary": "",
+    "summary": "The Horizontal Pod Autoscaler (HPA) was slow to respond because it lacked sufficient metric collection.",
     "whatHappened": "The HPA was configured to scale based on CPU usage, but there was insufficient historical metric data available for timely scaling actions.",
     "diagnosisSteps": [
       "Reviewed HPA logs and found that metric collection was configured too conservatively, causing the HPA to react slowly.",
@@ -9637,7 +9637,7 @@ export const scenarios: Scenario[] = [
     "title": "Inconsistent Load Balancing During Pod Scaling Events",
     "category": "Scaling & Load",
     "environment": "Kubernetes v1.20, AWS EKS",
-    "summary": "",
+    "summary": "Load balancer failed to redistribute traffic effectively when scaling pods, causing uneven distribution and degraded service.",
     "whatHappened": "After scaling up the pods, the load balancer failed to reconfigure itself to distribute traffic evenly across all pods, leading to some pods being overloaded.",
     "diagnosisSteps": [
       "Reviewed the load balancer configuration and discovered it had a fixed backend list, which did not update after pod scaling.",
