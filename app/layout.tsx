@@ -42,7 +42,7 @@ export default function RootLayout({
                 </a>
                 <div className="ml-auto flex items-center gap-6">
                   <a
-                    href="https://github.com/vijay2181/k8s-500-prod-issues"
+                    href="https://github.com/tuladhar/k8s-issues-explorer"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm hover:text-kubernetes transition-colors"
@@ -51,7 +51,7 @@ export default function RootLayout({
                     <span className="hidden sm:inline">GitHub</span>
                   </a>
                   <a
-                    href="https://linkedin.com/in/purtuladhar"
+                    href="https://linkedin.com/in/ptuladhar3"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-sm hover:text-kubernetes transition-colors"
@@ -81,7 +81,7 @@ export default function RootLayout({
                   <p className="text-sm text-muted-foreground">
                     Created by{" "}
                     <a
-                      href="https://linkedin.com/in/purtuladhar"
+                      href="https://linkedin.com/in/ptuladhar3"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="font-medium underline underline-offset-4 hover:text-kubernetes"
