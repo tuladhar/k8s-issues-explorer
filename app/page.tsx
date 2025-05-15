@@ -1,10 +1,16 @@
+"use client"
+
 import Link from "next/link"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { scenarios } from "@/lib/data"
+import { scenarios as allScenarios, type Scenario } from "@/lib/data"
 import { KubernetesLogo } from "@/components/icons"
+import { ScenarioSearch } from "@/components/scenario-search"
+import { useState } from "react"
 
 export default function Home() {
+  const [scenarios, setScenarios] = useState<Scenario[]>(allScenarios)
+
   return (
     <div className="container mx-auto py-12 px-4">
       <header className="mb-16 text-center max-w-3xl mx-auto">
@@ -13,10 +19,12 @@ export default function Home() {
         </div>
         <h1 className="text-5xl font-bold mb-4 text-kubernetes">Kubernetes Production Issues</h1>
         <p className="text-xl text-muted-foreground leading-relaxed">
-          A collection of real-world Kubernetes production issues and their solutions, presented in an
-          easy-to-navigate format.
+          A collection of real-world Kubernetes production issues and their solutions, presented in an easy-to-navigate
+          format.
         </p>
       </header>
+
+      <ScenarioSearch onSearch={setScenarios} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {scenarios.map((scenario) => (

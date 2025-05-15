@@ -50,4 +50,3 @@ How to Avoid:
 
 -------------------- PROMPT 2 --------------------
 Alright this look good, please make theme it similar to Kubernetes project and Kubernets branding. Make the website fun to interact and also easier to read with great font style, enough spacing, professional layout of front page and details page that is easier to read, similar to how Ruby on Rails projects are. Also, mention me (Pur Tuladhar) who created this, and with LinkedIn.
-

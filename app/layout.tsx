@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { GitHubIcon, LinkedInIcon, KubernetesLogo } from "@/components/icons"
+import { PromoBanner } from "@/components/promo-banner"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +19,7 @@ const robotoMono = Roboto_Mono({
 export const metadata = {
   title: "K8s Production Issues Explorer",
   description: "A collection of real-world Kubernetes production issues and their solutions",
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -62,6 +63,7 @@ export default function RootLayout({
                 </div>
               </div>
             </nav>
+            <PromoBanner />
             <main className="flex-1 bg-slate-50">{children}</main>
             <footer className="border-t py-8 bg-white">
               <div className="container mx-auto px-4 text-center">
