@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div className="container mx-auto py-12 px-4">
-      <header className="mb-16 text-center max-w-3xl mx-auto">
+      <header className="mb-8 text-center max-w-3xl mx-auto">
         <div className="flex justify-center mb-6">
           <KubernetesLogo className="h-20 w-20 text-kubernetes" />
         </div>

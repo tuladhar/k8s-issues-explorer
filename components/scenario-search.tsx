@@ -63,7 +63,7 @@ export const ScenarioSearch = ({ onSearch }: ScenarioSearchProps) => {
   }, [debouncedSearchTerm, onSearch])
 
   return (
-    <div className="flex justify-center mb-8">
+    <div className="flex justify-center mb-16">
       <div className="relative w-1/2">
         <Input
           type="search"
