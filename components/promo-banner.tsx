@@ -54,8 +54,8 @@ export function PromoBanner({ className }: PromoBannerProps) {
       <div className={cn("bg-kubernetes/10 border-b border-kubernetes/20 py-4 px-4 relative", className)}>
         <div className="container mx-auto flex flex-col sm:flex-row items-center justify-center gap-4 text-base">
           <span className="font-medium text-center sm:text-left text-lg">
-            <span className="bg-kubernetes/10 text-kubernetes px-2 py-0.5 rounded font-mono">NEW</span> CKS Handbook -
-            2nd Edition now available!
+            <span className="bg-kubernetes/10 text-kubernetes px-2 py-0.5 rounded font-mono">NEW</span> <span className="text-kubernetes">CKS Handbook -
+            2nd Edition now available!</span>
           </span>
           <div className="flex items-center gap-3">
             <button
