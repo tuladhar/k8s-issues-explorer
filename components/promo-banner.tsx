@@ -71,7 +71,7 @@ export function PromoBanner({ className }: PromoBannerProps) {
               variant="kubernetes"
               size="sm"
               className="whitespace-nowrap text-base px-4 py-2 h-auto"
-              onClick={() => window.open("https://example.com/cks-handbook", "_blank")}
+              onClick={() => window.open("https://cks.purutuladhar.com", "_blank")}
             >
               Get the Book
             </Button>
